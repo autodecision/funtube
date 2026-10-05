@@ -1,0 +1,46 @@
+:root { font-family: system-ui, sans-serif; color: #eaf2ff; background: #050f26; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input { font: inherit; }
+button, a, input { outline-offset: 4px; }
+button { cursor: pointer; }
+button:disabled { opacity: .45; cursor: wait; }
+a { color: #b8d4ff; }
+.desktop-app { height: 100vh; display: grid; grid-template-columns: 280px minmax(0, 1fr); }
+.desktop-sidebar { padding: 30px 22px 18px; background: linear-gradient(180deg, #0e2353, #050f26); border-right: 1px solid #29436c; display: flex; flex-direction: column; overflow-y: auto; }
+.app-wordmark { font-size: 30px; font-weight: 300; margin-bottom: 30px; }
+.app-wordmark span { display: block; margin-top: 6px; font-size: 10px; font-weight: 600; color: #8faedc; letter-spacing: .17em; }
+.sidebar-action { padding: 12px 14px; text-align: left; color: #c9dcff; background: transparent; border: 1px solid transparent; border-radius: 6px; margin-bottom: 6px; }
+.sidebar-action:hover, .sidebar-action[aria-pressed=true] { border-color: #406496; background: #243f70; }
+.preview { margin-top: 34px; }
+.preview-image { display: grid; position: relative; aspect-ratio: 16 / 9; width: 100%; background: #07122b; border-radius: 8px; overflow: hidden; }
+.preview-image img { width: 100%; height: 100%; object-fit: cover; }
+.preview-play { position: absolute; inset: 0; display: grid; place-content: center; text-shadow: 0 2px 16px black; font-size: 32px; opacity: .8; }
+.preview h2 { font-size: 17px; line-height: 1.4; margin-top: 14px; }
+.preview p { color: #9cb8e3; font-size: 13px; line-height: 1.5; }
+.preview-hint { margin: 30px 0; }
+.watch-link { display: inline-block; margin-top: 10px; font-size: 13px; text-decoration: none; }
+.sidebar-footer { margin: auto 0 0; padding-top: 40px; color: #718eb7; font-size: 12px; }
+.desktop-main { min-height: 0; overflow: hidden; }
+.guide-notice { margin: 0 20px 10px; padding: 12px; background: #142a50; color: #bcd4ff; font-size: 12px; line-height: 1.5; max-height: 100px; overflow-y: auto; border-radius: 6px; }
+.settings-page { height: 100%; overflow-y: auto; padding: 32px 42px; background: linear-gradient(180deg, #0a1c46, #050f26); }
+.settings-page h1 { font-size: 28px; font-weight: 400; margin: 0 0 12px; }
+.settings-page h2 { font-size: 18px; }
+.settings-page h2 span, .settings-page p { color: #9fb9df; line-height: 1.6; }
+.settings-page section { margin: 32px 0; padding: 24px; border: 1px solid #29436c; border-radius: 8px; background: #091a3b; }
+.settings-page form { display: flex; flex-direction: column; gap: 14px; }
+.settings-page label { display: flex; flex-direction: column; gap: 7px; color: #bcd4ff; font-size: 13px; }
+.settings-page label span { font-size: 11px; color: #7895bf; }
+.settings-page input { min-width: 0; padding: 10px 12px; border: 1px solid #34517f; background: #06142e; color: #eaf2ff; border-radius: 5px; }
+.settings-page button { padding: 9px 15px; align-self: flex-start; border: 1px solid #406496; background: #243f70; color: #eaf2ff; border-radius: 5px; }
+.settings-page button:hover { background: #31548e; }
+.form-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.key-clear-actions, .channel-editor-actions { display: flex; gap: 10px; margin-top: 16px; }
+.settings-message { padding: 12px; border: 1px solid #446ba2; border-radius: 5px; }
+.channel-editor { display: grid; gap: 18px; }
+.channel-editor form { border-top: 1px solid #29436c; padding-top: 18px; display: grid; grid-template-columns: minmax(180px, 1fr) 1fr; }
+.channel-editor-name { display: flex; flex-direction: column; gap: 6px; }
+.channel-editor-name small { color: #7895bf; }
+.settings-page .checkbox-label { flex-direction: row; align-items: center; }
+.channel-editor-actions { margin-top: 0; }
+@media (max-width: 1050px) { .desktop-app { grid-template-columns: 235px minmax(0, 1fr); } .settings-page { padding: 25px; } }

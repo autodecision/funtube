@@ -1,0 +1,29 @@
+{
+  "name": "funtube",
+  "productName": "Funtube",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A desktop YouTube and Rumble channel guide with a curated demo library",
+  "type": "module",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "npm run build && electron .",
+    "dev": "npm start",
+    "build": "tsc --noEmit && vite build",
+    "test": "node --test tests/*.test.js",
+    "package": "npm run build && electron-packager . Funtube --out=release --overwrite --ignore='^/(release|test-results|tests|scripts|src|node_modules/.cache)($|/)'"
+  },
+  "dependencies": {
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  },
+  "devDependencies": {
+    "@electron/packager": "20.3.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.1",
+    "electron": "44.5.1",
+    "typescript": "6.0.3",
+    "vite": "8.3.2"
+  }
+}

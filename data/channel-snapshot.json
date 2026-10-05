@@ -1,0 +1,422 @@
+{
+  "channels": [
+    {
+      "id": 1,
+      "platform": "youtube",
+      "channel_key": "UCY1kMZp36IQSyNx_9h4mpCg",
+      "name": "Mark Rober",
+      "url": "https://www.youtube.com/channel/UCY1kMZp36IQSyNx_9h4mpCg",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_ksXY2REjZ6gYKSgnWT5jC_zT9mX900vyFtVinR8KbHww=s900-c-k-c0x00ffffff-no-rj",
+      "position": 0,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:07.681Z",
+      "category": "Science & Learning",
+      "section": "Experiments"
+    },
+    {
+      "id": 2,
+      "platform": "youtube",
+      "channel_key": "UC6107grRI4m0o2-emgoDnAA",
+      "name": "SmarterEveryDay",
+      "url": "https://www.youtube.com/channel/UC6107grRI4m0o2-emgoDnAA",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_l59Ewmp0DHZBRWbY9dVqjd2_mWwvrn8ad0bJfmdbMRYcA=s900-c-k-c0x00ffffff-no-rj",
+      "position": 1,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:04.498Z",
+      "category": "Science & Learning",
+      "section": "Experiments"
+    },
+    {
+      "id": 3,
+      "platform": "youtube",
+      "channel_key": "UCHnyfMqiRRG1u-2MsSQLbXA",
+      "name": "Veritasium",
+      "url": "https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA",
+      "avatar": "https://yt3.googleusercontent.com/7vCbvtCqtjQ3YLgsJt7Y952MQV1sBvhllSCSxHP8_sVZdcPCBrITfhkN2RdyCuwPnsByq-1GoA=s900-c-k-c0x00ffffff-no-rj",
+      "position": 2,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:10.671Z",
+      "category": "Science & Learning",
+      "section": "Experiments"
+    },
+    {
+      "id": 4,
+      "platform": "youtube",
+      "channel_key": "UCEIwxahdLz7bap-VDs9h35A",
+      "name": "Steve Mould",
+      "url": "https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A",
+      "avatar": "https://yt3.googleusercontent.com/iX-akiHlJYuPDq4YVBO83cfjWW0aQefdewmI326XVhZkzxnS3MrqNVi49J33jLBw5LR_ZVyKFA=s900-c-k-c0x00ffffff-no-rj",
+      "position": 3,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:08.178Z",
+      "category": "Science & Learning",
+      "section": "Experiments"
+    },
+    {
+      "id": 5,
+      "platform": "youtube",
+      "channel_key": "UCoxcjq-8xIDTYp3uz647V5A",
+      "name": "Numberphile",
+      "url": "https://www.youtube.com/channel/UCoxcjq-8xIDTYp3uz647V5A",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_nmbQSAGKk1OZCBBf_sPJqLoFfYOVDWRDzALocBjGQtHeI=s900-c-k-c0x00ffffff-no-rj",
+      "position": 4,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:12.801Z",
+      "category": "Science & Learning",
+      "section": "Math"
+    },
+    {
+      "id": 6,
+      "platform": "youtube",
+      "channel_key": "UCYO_jab_esuFRV4b17AJtAw",
+      "name": "3Blue1Brown",
+      "url": "https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_nFzZFPLxPZRHcE3SSwzdrbuWqfoWYwLAu0_2iO6blQYAU=s900-c-k-c0x00ffffff-no-rj",
+      "position": 5,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:16.332Z",
+      "category": "Science & Learning",
+      "section": "Math"
+    },
+    {
+      "id": 7,
+      "platform": "youtube",
+      "channel_key": "UCLA_DiR1FfKNvjuUpBHmylQ",
+      "name": "NASA",
+      "url": "https://www.youtube.com/channel/UCLA_DiR1FfKNvjuUpBHmylQ",
+      "avatar": "https://yt3.googleusercontent.com/eIf5fNPcIcj9ig-wZBeq4stFy1lgjWTW1nLT5dYlFkHZprZ03QBiMcbpwNMB6XSBjrSFGtAGQg=s900-c-k-c0x00ffffff-no-rj",
+      "position": 6,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:14.201Z",
+      "category": "Science & Learning",
+      "section": "Space"
+    },
+    {
+      "id": 8,
+      "platform": "youtube",
+      "channel_key": "UCwmZiChSryoWQCZMIQezgTg",
+      "name": "BBC Earth",
+      "url": "https://www.youtube.com/channel/UCwmZiChSryoWQCZMIQezgTg",
+      "avatar": "https://yt3.googleusercontent.com/4aOOdq9yagLxasYPhdG7qQEVP-nrcmqoFD74N-dxw9ctOxXZtuSTTZKGzNsx-Nn0OqzVGnPZUA=s900-c-k-c0x00ffffff-no-rj",
+      "position": 7,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:18.575Z",
+      "category": "Nature & Outdoors",
+      "section": "Wildlife"
+    },
+    {
+      "id": 9,
+      "platform": "youtube",
+      "channel_key": "UCnM5iMGiKsZg-iOlIO2ZkdQ",
+      "name": "Monterey Bay Aquarium",
+      "url": "https://www.youtube.com/channel/UCnM5iMGiKsZg-iOlIO2ZkdQ",
+      "avatar": "https://yt3.googleusercontent.com/QQzt4UB9VlT5zHh_PgEFlfYohvaps1_ZlPLcutwDI3A3koJgZsH-rFRFqJ81N3M45UDKsdL9yg=s900-c-k-c0x00ffffff-no-rj",
+      "position": 8,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:21.302Z",
+      "category": "Nature & Outdoors",
+      "section": "Wildlife"
+    },
+    {
+      "id": 10,
+      "platform": "youtube",
+      "channel_key": "UCAL3JXZSzSm8AlZyD3nQdBA",
+      "name": "Primitive Technology",
+      "url": "https://www.youtube.com/channel/UCAL3JXZSzSm8AlZyD3nQdBA",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_kltmVPbr5yKSJ8YaCv8ouXktPx-11IkO5dcmqN-dFmug=s900-c-k-c0x00ffffff-no-rj",
+      "position": 9,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:22.508Z",
+      "category": "Nature & Outdoors",
+      "section": "Making"
+    },
+    {
+      "id": 11,
+      "platform": "youtube",
+      "channel_key": "UCBJycsmduvYEL83R_U4JriQ",
+      "name": "Marques Brownlee",
+      "url": "https://www.youtube.com/channel/UCBJycsmduvYEL83R_U4JriQ",
+      "avatar": "https://yt3.googleusercontent.com/qu4TmIaYUlS41-dJ9gZ7DUR3nilvmB5_11i6OKSdvNnBNiyOusZP1bMN6ICnuxtjFBb6ioKgRQ=s900-c-k-c0x00ffffff-no-rj",
+      "position": 10,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:25.605Z",
+      "category": "Technology",
+      "section": "Reviews"
+    },
+    {
+      "id": 12,
+      "platform": "youtube",
+      "channel_key": "UCiDJtJKMICpb9B1qf7qjEOA",
+      "name": "Adam Savage’s Tested",
+      "url": "https://www.youtube.com/channel/UCiDJtJKMICpb9B1qf7qjEOA",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_lJNRS5W3nnMhU5L_V3Nl2zqoJTh1POU3hrHSYYIzLCycE=s900-c-k-c0x00ffffff-no-rj",
+      "position": 11,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:27.177Z",
+      "category": "Technology",
+      "section": "Making"
+    },
+    {
+      "id": 13,
+      "platform": "youtube",
+      "channel_key": "UCsUyEbIMzpE-zdfwmB9zFeA",
+      "name": "Raspberry Pi Foundation",
+      "url": "https://www.youtube.com/channel/UCsUyEbIMzpE-zdfwmB9zFeA",
+      "avatar": "https://yt3.googleusercontent.com/IuxdT0wffZlabCbxcyEAdJ-sdjYV_nW4TLEYGyggMot9tF3CivB5qp8j1_p-tIpW41zoOtxwRhM=s900-c-k-c0x00ffffff-no-rj",
+      "position": 12,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:27.884Z",
+      "category": "Technology",
+      "section": "Making"
+    },
+    {
+      "id": 14,
+      "platform": "youtube",
+      "channel_key": "UCOKHwx1VCdgnxwbjyb9Iu1g",
+      "name": "Blender Guru",
+      "url": "https://www.youtube.com/channel/UCOKHwx1VCdgnxwbjyb9Iu1g",
+      "avatar": "https://yt3.googleusercontent.com/DSzMBU-1G4ZvdLS6YtnItbZliceGWE2uS8VIo2jYcxEDqPtSmYIFcDk6NXgjn99qXoab06XWnw=s900-c-k-c0x00ffffff-no-rj",
+      "position": 13,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:32.248Z",
+      "category": "Art & Creativity",
+      "section": "Digital Art"
+    },
+    {
+      "id": 15,
+      "platform": "youtube",
+      "channel_key": "UCxcnsr1R5Ge_fbTu5ajt8DQ",
+      "name": "Bob Ross",
+      "url": "https://www.youtube.com/channel/UCxcnsr1R5Ge_fbTu5ajt8DQ",
+      "avatar": "https://yt3.googleusercontent.com/_JeSHmzSY045bgMXcxOIXTSdURg8BvhrlUFIXqcmbL5hZONejX8eOuoErMYdaerrXqkP1LasaQ=s900-c-k-c0x00ffffff-no-rj",
+      "position": 14,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:36.025Z",
+      "category": "Art & Creativity",
+      "section": "Painting"
+    },
+    {
+      "id": 16,
+      "platform": "youtube",
+      "channel_key": "UCHu2KNu6TtJ0p4hpSW7Yv7Q",
+      "name": "Jazza",
+      "url": "https://www.youtube.com/channel/UCHu2KNu6TtJ0p4hpSW7Yv7Q",
+      "avatar": "https://yt3.googleusercontent.com/NxkGR-9Go3siyXFGk45g7ny7H3yvwm8hkaN6iY4xeekvTCJ_4MvwV-J59Yx1VgfMGACY_Kxx=s900-c-k-c0x00ffffff-no-rj",
+      "position": 15,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:33.437Z",
+      "category": "Art & Creativity",
+      "section": "Drawing"
+    },
+    {
+      "id": 17,
+      "platform": "youtube",
+      "channel_key": "UChBEbMKI1eCcejTtmI32UEw",
+      "name": "Joshua Weissman",
+      "url": "https://www.youtube.com/channel/UChBEbMKI1eCcejTtmI32UEw",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_nfXRvoxu5cFt2H4WhJfFLbL5SVdzmvEnFymnPzH3_1qPM=s900-c-k-c0x00ffffff-no-rj",
+      "position": 16,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:36.591Z",
+      "category": "Food & Cooking",
+      "section": "Recipes"
+    },
+    {
+      "id": 18,
+      "platform": "youtube",
+      "channel_key": "UCRIZtPl9nb9RiXc9btSTQNw",
+      "name": "Food Wishes",
+      "url": "https://www.youtube.com/channel/UCRIZtPl9nb9RiXc9btSTQNw",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_kGZ14S6frarUZ0q3zzhqTSnl3zkYo_qxwQ8Wi-J11MaA=s900-c-k-c0x00ffffff-no-rj",
+      "position": 17,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:38.183Z",
+      "category": "Food & Cooking",
+      "section": "Recipes"
+    },
+    {
+      "id": 19,
+      "platform": "youtube",
+      "channel_key": "UCTvYEid8tmg0jqGPDkehc_Q",
+      "name": "Preppy Kitchen",
+      "url": "https://www.youtube.com/channel/UCTvYEid8tmg0jqGPDkehc_Q",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_n6vpBxo5qnhD6WDG5Y8x4X_fHRP9vLfSKJ7u414X7rb9I=s900-c-k-c0x00ffffff-no-rj",
+      "position": 18,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:41.611Z",
+      "category": "Food & Cooking",
+      "section": "Baking"
+    },
+    {
+      "id": 20,
+      "platform": "youtube",
+      "channel_key": "UCUK0HBIBWgM2c4vsPhkYY4w",
+      "name": "The Slow Mo Guys",
+      "url": "https://www.youtube.com/channel/UCUK0HBIBWgM2c4vsPhkYY4w",
+      "avatar": "https://yt3.googleusercontent.com/4jO-ot8BlEI83oM53qDYLi63zXjxhFAaTTClCjYALQaxBUrPZ8gWd1agxFCk3JLrFLGQNtj-II8=s900-c-k-c0x00ffffff-no-rj",
+      "position": 19,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:24:40.983Z",
+      "category": "Entertainment",
+      "section": "Slow Motion"
+    },
+    {
+      "id": 21,
+      "platform": "rumble",
+      "channel_key": "c/SBMowing",
+      "name": "SB Mowing",
+      "url": "https://rumble.com/c/SBMowing",
+      "avatar": "https://hugh.cdn.rumble.cloud/video/z8/j/C/J/A/jCJAa.baa.1-SBMowing-tb0rxl.png",
+      "position": 20,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:27:01Z",
+      "category": "Nature & Outdoors",
+      "section": "Restoration"
+    },
+    {
+      "id": 22,
+      "platform": "rumble",
+      "channel_key": "c/MajorLeagueFishing",
+      "name": "Major League Fishing",
+      "url": "https://rumble.com/c/MajorLeagueFishing",
+      "avatar": "https://hugh.cdn.rumble.cloud/video/z8/z/x/M/w/zxMwa.baa-MajorLeagueFishing-sa786h.jpeg",
+      "position": 21,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:27:01Z",
+      "category": "Nature & Outdoors",
+      "section": "Fishing"
+    },
+    {
+      "id": 23,
+      "platform": "rumble",
+      "channel_key": "c/FowlersMakeryandMischief",
+      "name": "Fowler's Makery and Mischief",
+      "url": "https://rumble.com/c/FowlersMakeryandMischief",
+      "avatar": "https://hugh.cdn.rumble.cloud/video/z8/c/3/u/v/c3uva.baa-FowlersMakeryandMischief-s70667.jpeg",
+      "position": 22,
+      "enabled": 1,
+      "created_at": "2026-10-05T13:27:01Z",
+      "category": "Nature & Outdoors",
+      "section": "Making"
+    }
+  ],
+  "cache": [
+    {
+      "cache_key": "youtube:UC6107grRI4m0o2-emgoDnAA",
+      "payload": "{\"videos\": [{\"id\": \"pXypQ6d_iDg\", \"title\": \"INSIDE a Nuclear Reactor Core - Smarter Every Day 317\", \"thumbnail\": \"https://i.ytimg.com/vi/pXypQ6d_iDg/hqdefault.jpg\", \"time\": \"9/26/2026\", \"url\": \"https://www.youtube.com/watch?v=pXypQ6d_iDg\"}, {\"id\": \"5lCWqEFVzbY\", \"title\": \"They Call it \\\"The Taco Turn\\\" and it's Genius - Smarter Every Day 315\", \"thumbnail\": \"https://i.ytimg.com/vi/5lCWqEFVzbY/hqdefault.jpg\", \"time\": \"5/31/2026\", \"url\": \"https://www.youtube.com/watch?v=5lCWqEFVzbY\"}, {\"id\": \"WtQ64nSbdY4\", \"title\": \"What Everyone Sees... But I Don't (The Johari Window) - Smarter Every Day 314\", \"thumbnail\": \"https://i.ytimg.com/vi/WtQ64nSbdY4/hqdefault.jpg\", \"time\": \"4/11/2026\", \"url\": \"https://www.youtube.com/watch?v=WtQ64nSbdY4\"}]}",
+      "fetched_at": 1791206644498
+    },
+    {
+      "cache_key": "youtube:UCY1kMZp36IQSyNx_9h4mpCg",
+      "payload": "{\"videos\": [{\"id\": \"_L1Rim7-IPo\", \"title\": \"Last Cheater Standing Wins $10,000\", \"thumbnail\": \"https://i.ytimg.com/vi/_L1Rim7-IPo/hqdefault.jpg\", \"time\": \"9/19/2026\", \"url\": \"https://www.youtube.com/watch?v=_L1Rim7-IPo\"}, {\"id\": \"h0EGCnBjTVk\", \"title\": \"I Outsmarted Pro Car Thieves\", \"thumbnail\": \"https://i.ytimg.com/vi/h0EGCnBjTVk/hqdefault.jpg\", \"time\": \"6/20/2026\", \"url\": \"https://www.youtube.com/watch?v=h0EGCnBjTVk\"}]}",
+      "fetched_at": 1791206647681
+    },
+    {
+      "cache_key": "youtube:UCEIwxahdLz7bap-VDs9h35A",
+      "payload": "{\"videos\": [{\"id\": \"6gsZY_-kT3U\", \"title\": \"This Device Turns Anything into a Suction Cup\", \"thumbnail\": \"https://i.ytimg.com/vi/6gsZY_-kT3U/hqdefault.jpg\", \"time\": \"9/30/2026\", \"url\": \"https://www.youtube.com/watch?v=6gsZY_-kT3U\"}, {\"id\": \"k3Q9UWWiPsQ\", \"title\": \"The \\\"Perpetual Motion\\\" Pump That Actually Works\", \"thumbnail\": \"https://i.ytimg.com/vi/k3Q9UWWiPsQ/hqdefault.jpg\", \"time\": \"8/31/2026\", \"url\": \"https://www.youtube.com/watch?v=k3Q9UWWiPsQ\"}, {\"id\": \"NvkZaWLe0Sk\", \"title\": \"This Device Goes Past Equilibrium\", \"thumbnail\": \"https://i.ytimg.com/vi/NvkZaWLe0Sk/hqdefault.jpg\", \"time\": \"8/21/2026\", \"url\": \"https://www.youtube.com/watch?v=NvkZaWLe0Sk\"}, {\"id\": \"ti2qiU_JTUQ\", \"title\": \"The Euler Disc Is The Wrong Shape\", \"thumbnail\": \"https://i.ytimg.com/vi/ti2qiU_JTUQ/hqdefault.jpg\", \"time\": \"8/1/2026\", \"url\": \"https://www.youtube.com/watch?v=ti2qiU_JTUQ\"}]}",
+      "fetched_at": 1791206648178
+    },
+    {
+      "cache_key": "youtube:UCHnyfMqiRRG1u-2MsSQLbXA",
+      "payload": "{\"videos\": [{\"id\": \"ONAuUyml0yI\", \"title\": \"We're trying something new...\", \"thumbnail\": \"https://i.ytimg.com/vi/ONAuUyml0yI/hqdefault.jpg\", \"time\": \"9/30/2026\", \"url\": \"https://www.youtube.com/watch?v=ONAuUyml0yI\"}, {\"id\": \"J1WoNuemKOg\", \"title\": \"We sent a camera to space to film the solar eclipse\", \"thumbnail\": \"https://i.ytimg.com/vi/J1WoNuemKOg/hqdefault.jpg\", \"time\": \"8/17/2026\", \"url\": \"https://www.youtube.com/watch?v=J1WoNuemKOg\"}, {\"id\": \"wt4p2oalmRY\", \"title\": \"Is spider web really stronger than steel?\", \"thumbnail\": \"https://i.ytimg.com/vi/wt4p2oalmRY/hqdefault.jpg\", \"time\": \"8/2/2026\", \"url\": \"https://www.youtube.com/watch?v=wt4p2oalmRY\"}]}",
+      "fetched_at": 1791206650671
+    },
+    {
+      "cache_key": "youtube:UCoxcjq-8xIDTYp3uz647V5A",
+      "payload": "{\"videos\": [{\"id\": \"95335U-cUh8\", \"title\": \"Big News in Polyhedra - Numberphile\", \"thumbnail\": \"https://i.ytimg.com/vi/95335U-cUh8/hqdefault.jpg\", \"time\": \"10/2/2026\", \"url\": \"https://www.youtube.com/watch?v=95335U-cUh8\"}, {\"id\": \"Mzbtj5nkMXI\", \"title\": \"The Buckmaster Interview (Navier-Stokes) - Numberphile\", \"thumbnail\": \"https://i.ytimg.com/vi/Mzbtj5nkMXI/hqdefault.jpg\", \"time\": \"9/29/2026\", \"url\": \"https://www.youtube.com/watch?v=Mzbtj5nkMXI\"}, {\"id\": \"9HlIuxnuTKQ\", \"title\": \"What now for Mathematics (with 3Blue1Brown) - Numberphile\", \"thumbnail\": \"https://i.ytimg.com/vi/9HlIuxnuTKQ/hqdefault.jpg\", \"time\": \"9/28/2026\", \"url\": \"https://www.youtube.com/watch?v=9HlIuxnuTKQ\"}, {\"id\": \"3geDF-DAwpg\", \"title\": \"SOLVED: Navier-Stokes cracked by AI - Numberphile\", \"thumbnail\": \"https://i.ytimg.com/vi/3geDF-DAwpg/hqdefault.jpg\", \"time\": \"9/18/2026\", \"url\": \"https://www.youtube.com/watch?v=3geDF-DAwpg\"}]}",
+      "fetched_at": 1791206652801
+    },
+    {
+      "cache_key": "youtube:UCLA_DiR1FfKNvjuUpBHmylQ",
+      "payload": "{\"videos\": [{\"id\": \"RU6gEobXVHA\", \"title\": \"NASA’s SpaceX Crew-12 Farewell and International Space Station Change of Command\", \"thumbnail\": \"https://i.ytimg.com/vi/RU6gEobXVHA/hqdefault.jpg\", \"time\": \"10/4/2026\", \"url\": \"https://www.youtube.com/watch?v=RU6gEobXVHA\"}, {\"id\": \"FCCJRyhxZSo\", \"title\": \"NASA's SpaceX Crew-13 Arrival & Welcome Remarks\", \"thumbnail\": \"https://i.ytimg.com/vi/FCCJRyhxZSo/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=FCCJRyhxZSo\"}, {\"id\": \"QSJVOZOUmek\", \"title\": \"NASA's SpaceX Crew-13 Postlaunch News Conference (Oct. 1, 2026)\", \"thumbnail\": \"https://i.ytimg.com/vi/QSJVOZOUmek/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=QSJVOZOUmek\"}, {\"id\": \"7ZiUbT1-djA\", \"title\": \"NASA's SpaceX Crew-13 Launch\", \"thumbnail\": \"https://i.ytimg.com/vi/7ZiUbT1-djA/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=7ZiUbT1-djA\"}]}",
+      "fetched_at": 1791206654201
+    },
+    {
+      "cache_key": "youtube:UCYO_jab_esuFRV4b17AJtAw",
+      "payload": "{\"videos\": [{\"id\": \"Nbwv5wHQoj0\", \"title\": \"The last IMO problem AI could not solve\", \"thumbnail\": \"https://i.ytimg.com/vi/Nbwv5wHQoj0/hqdefault.jpg\", \"time\": \"9/18/2026\", \"url\": \"https://www.youtube.com/watch?v=Nbwv5wHQoj0\"}, {\"id\": \"GlYgs6v2YfU\", \"title\": \"But what is cross-entropy? | Compression is Intelligence Part 2\", \"thumbnail\": \"https://i.ytimg.com/vi/GlYgs6v2YfU/hqdefault.jpg\", \"time\": \"7/16/2026\", \"url\": \"https://www.youtube.com/watch?v=GlYgs6v2YfU\"}, {\"id\": \"l6DKRf-fAAM\", \"title\": \"Reinventing Entropy | Compression is Intelligence Part 1\", \"thumbnail\": \"https://i.ytimg.com/vi/l6DKRf-fAAM/hqdefault.jpg\", \"time\": \"6/7/2026\", \"url\": \"https://www.youtube.com/watch?v=l6DKRf-fAAM\"}, {\"id\": \"ldxFjLJ3rVY\", \"title\": \"How (and why) to take a logarithm of an image\", \"thumbnail\": \"https://i.ytimg.com/vi/ldxFjLJ3rVY/hqdefault.jpg\", \"time\": \"3/22/2026\", \"url\": \"https://www.youtube.com/watch?v=ldxFjLJ3rVY\"}]}",
+      "fetched_at": 1791206656332
+    },
+    {
+      "cache_key": "youtube:UCwmZiChSryoWQCZMIQezgTg",
+      "payload": "{\"videos\": [{\"id\": \"OEUJbuCbS9U\", \"title\": \"Mysterious Underwater Creatures | BBC Earth\", \"thumbnail\": \"https://i.ytimg.com/vi/OEUJbuCbS9U/hqdefault.jpg\", \"time\": \"10/4/2026\", \"url\": \"https://www.youtube.com/watch?v=OEUJbuCbS9U\"}, {\"id\": \"efdIAw-i380\", \"title\": \"Mustang Stallions Duel Across The Nevada Desert | 20 Years of Planet Earth II | BBC Earth\", \"thumbnail\": \"https://i.ytimg.com/vi/efdIAw-i380/hqdefault.jpg\", \"time\": \"10/2/2026\", \"url\": \"https://www.youtube.com/watch?v=efdIAw-i380\"}, {\"id\": \"ZvdMof3-aXI\", \"title\": \"Incredible Scenes of Wild Animals Battling to Survive | BBC Earth\", \"thumbnail\": \"https://i.ytimg.com/vi/ZvdMof3-aXI/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=ZvdMof3-aXI\"}, {\"id\": \"U3rqOUbs_7w\", \"title\": \"Extraordinary Wildlife Of The Arctic | BBC Earth\", \"thumbnail\": \"https://i.ytimg.com/vi/U3rqOUbs_7w/hqdefault.jpg\", \"time\": \"9/29/2026\", \"url\": \"https://www.youtube.com/watch?v=U3rqOUbs_7w\"}]}",
+      "fetched_at": 1791206658575
+    },
+    {
+      "cache_key": "youtube:UCnM5iMGiKsZg-iOlIO2ZkdQ",
+      "payload": "{\"videos\": [{\"id\": \"AWJi0LgyA28\", \"title\": \"Live Aviary Cam | Monterey Bay Aquarium\", \"thumbnail\": \"https://i.ytimg.com/vi/AWJi0LgyA28/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=AWJi0LgyA28\"}, {\"id\": \"biyc3oHuRxE\", \"title\": \"Live Aviary Cam | Monterey Bay Aquarium\", \"thumbnail\": \"https://i.ytimg.com/vi/biyc3oHuRxE/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=biyc3oHuRxE\"}, {\"id\": \"L3VFCgVN3WQ\", \"title\": \"Verified Shrimp: seafood you can trust\", \"thumbnail\": \"https://i.ytimg.com/vi/L3VFCgVN3WQ/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=L3VFCgVN3WQ\"}, {\"id\": \"DuEd30--2ik\", \"title\": \"How to make sushi rice at home\", \"thumbnail\": \"https://i.ytimg.com/vi/DuEd30--2ik/hqdefault.jpg\", \"time\": \"9/30/2026\", \"url\": \"https://www.youtube.com/watch?v=DuEd30--2ik\"}]}",
+      "fetched_at": 1791206661302
+    },
+    {
+      "cache_key": "youtube:UCAL3JXZSzSm8AlZyD3nQdBA",
+      "payload": "{\"videos\": [{\"id\": \"PXuV_YCt8g4\", \"title\": \"Primitive Technology: 3 Iron Consolidation Experiments\", \"thumbnail\": \"https://i.ytimg.com/vi/PXuV_YCt8g4/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=PXuV_YCt8g4\"}, {\"id\": \"99j2NpomwLk\", \"title\": \"Primitive Technology: Iron Prill Welding Experiment\", \"thumbnail\": \"https://i.ytimg.com/vi/99j2NpomwLk/hqdefault.jpg\", \"time\": \"9/3/2026\", \"url\": \"https://www.youtube.com/watch?v=99j2NpomwLk\"}, {\"id\": \"j4lS236jEjs\", \"title\": \"Primitive Technology: Flat vs Curved Tiles, A Tough Lesson\", \"thumbnail\": \"https://i.ytimg.com/vi/j4lS236jEjs/hqdefault.jpg\", \"time\": \"8/6/2026\", \"url\": \"https://www.youtube.com/watch?v=j4lS236jEjs\"}, {\"id\": \"58LGFLT4lYg\", \"title\": \"Primitive Technology: Firing Tiles and Building the Roof on the Mud Mortar/Fired Brick Hut\", \"thumbnail\": \"https://i.ytimg.com/vi/58LGFLT4lYg/hqdefault.jpg\", \"time\": \"7/9/2026\", \"url\": \"https://www.youtube.com/watch?v=58LGFLT4lYg\"}]}",
+      "fetched_at": 1791206662508
+    },
+    {
+      "cache_key": "youtube:UCBJycsmduvYEL83R_U4JriQ",
+      "payload": "{\"videos\": [{\"id\": \"3iRUwVzRDZQ\", \"title\": \"Xiaomi 18 Fold: How Does This Happen?\", \"thumbnail\": \"https://i.ytimg.com/vi/3iRUwVzRDZQ/hqdefault.jpg\", \"time\": \"10/2/2026\", \"url\": \"https://www.youtube.com/watch?v=3iRUwVzRDZQ\"}, {\"id\": \"e1q-TuHdc4Y\", \"title\": \"Dear YouTube!\", \"thumbnail\": \"https://i.ytimg.com/vi/e1q-TuHdc4Y/hqdefault.jpg\", \"time\": \"9/30/2026\", \"url\": \"https://www.youtube.com/watch?v=e1q-TuHdc4Y\"}, {\"id\": \"rayrrXot17M\", \"title\": \"Nothing Headphone 1 Pro: They Copied the Wrong Thing!\", \"thumbnail\": \"https://i.ytimg.com/vi/rayrrXot17M/hqdefault.jpg\", \"time\": \"9/28/2026\", \"url\": \"https://www.youtube.com/watch?v=rayrrXot17M\"}, {\"id\": \"DkUuOr21v4s\", \"title\": \"Xiaomi 18 Pro Max: They've Done It Again!\", \"thumbnail\": \"https://i.ytimg.com/vi/DkUuOr21v4s/hqdefault.jpg\", \"time\": \"9/24/2026\", \"url\": \"https://www.youtube.com/watch?v=DkUuOr21v4s\"}]}",
+      "fetched_at": 1791206665605
+    },
+    {
+      "cache_key": "youtube:UCiDJtJKMICpb9B1qf7qjEOA",
+      "payload": "{\"videos\": [{\"id\": \"PGYcEISGWJA\", \"title\": \"Adam Savage’s Exhausting MythBusters Spinoff Experience\", \"thumbnail\": \"https://i.ytimg.com/vi/PGYcEISGWJA/hqdefault.jpg\", \"time\": \"10/4/2026\", \"url\": \"https://www.youtube.com/watch?v=PGYcEISGWJA\"}, {\"id\": \"kewL6XmW4wo\", \"title\": \"Adam Savage's Worst Workshop Injury\", \"thumbnail\": \"https://i.ytimg.com/vi/kewL6XmW4wo/hqdefault.jpg\", \"time\": \"10/3/2026\", \"url\": \"https://www.youtube.com/watch?v=kewL6XmW4wo\"}, {\"id\": \"-9TAHc9LXvw\", \"title\": \"Adam Savage Stunned by This Hammer Detail!\", \"thumbnail\": \"https://i.ytimg.com/vi/-9TAHc9LXvw/hqdefault.jpg\", \"time\": \"10/2/2026\", \"url\": \"https://www.youtube.com/watch?v=-9TAHc9LXvw\"}, {\"id\": \"9VcVtuutdpE\", \"title\": \"The Reason This Space Docking Module Was Androgynous\", \"thumbnail\": \"https://i.ytimg.com/vi/9VcVtuutdpE/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=9VcVtuutdpE\"}]}",
+      "fetched_at": 1791206667177
+    },
+    {
+      "cache_key": "youtube:UCsUyEbIMzpE-zdfwmB9zFeA",
+      "payload": "{\"videos\": [{\"id\": \"ZcJEgsQXO7g\", \"title\": \"Getting Started with Mission Space Lab 2026/27 🚀\", \"thumbnail\": \"https://i.ytimg.com/vi/ZcJEgsQXO7g/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=ZcJEgsQXO7g\"}, {\"id\": \"9eHx_eGIHjI\", \"title\": \"Why you should start a Code Club | Mentor stories\", \"thumbnail\": \"https://i.ytimg.com/vi/9eHx_eGIHjI/hqdefault.jpg\", \"time\": \"9/22/2026\", \"url\": \"https://www.youtube.com/watch?v=9eHx_eGIHjI\"}, {\"id\": \"uyq5B_eLvOc\", \"title\": \"Experience AI: New free themed resources for teaching AI across the curriculum\", \"thumbnail\": \"https://i.ytimg.com/vi/uyq5B_eLvOc/hqdefault.jpg\", \"time\": \"9/15/2026\", \"url\": \"https://www.youtube.com/watch?v=uyq5B_eLvOc\"}, {\"id\": \"gYgFbeZ5XFE\", \"title\": \"AI in education: why it's not just about the tool | Critical thinking in the age of AI | Hello World\", \"thumbnail\": \"https://i.ytimg.com/vi/gYgFbeZ5XFE/hqdefault.jpg\", \"time\": \"8/25/2026\", \"url\": \"https://www.youtube.com/watch?v=gYgFbeZ5XFE\"}]}",
+      "fetched_at": 1791206667884
+    },
+    {
+      "cache_key": "youtube:UCOKHwx1VCdgnxwbjyb9Iu1g",
+      "payload": "{\"videos\": [{\"id\": \"qsmDdOi07fI\", \"title\": \"I tested viral AI 3D products\", \"thumbnail\": \"https://i.ytimg.com/vi/qsmDdOi07fI/hqdefault.jpg\", \"time\": \"9/20/2026\", \"url\": \"https://www.youtube.com/watch?v=qsmDdOi07fI\"}, {\"id\": \"kBsVJSETydU\", \"title\": \"How To Make The Backrooms In Blender\", \"thumbnail\": \"https://i.ytimg.com/vi/kBsVJSETydU/hqdefault.jpg\", \"time\": \"8/30/2026\", \"url\": \"https://www.youtube.com/watch?v=kBsVJSETydU\"}, {\"id\": \"RwwFIpX7djc\", \"title\": \"Why You Can't Render Pokemon Cards in Blender\", \"thumbnail\": \"https://i.ytimg.com/vi/RwwFIpX7djc/hqdefault.jpg\", \"time\": \"8/13/2026\", \"url\": \"https://www.youtube.com/watch?v=RwwFIpX7djc\"}, {\"id\": \"ENnEYoUpFfU\", \"title\": \"Fundamentals of Lighting in Blender\", \"thumbnail\": \"https://i.ytimg.com/vi/ENnEYoUpFfU/hqdefault.jpg\", \"time\": \"5/9/2026\", \"url\": \"https://www.youtube.com/watch?v=ENnEYoUpFfU\"}]}",
+      "fetched_at": 1791206672248
+    },
+    {
+      "cache_key": "youtube:UCHu2KNu6TtJ0p4hpSW7Yv7Q",
+      "payload": "{\"videos\": [{\"id\": \"z5yer1ZXzr4\", \"title\": \"I entered a Wildwood art competition I'm NOT ALLOWED to win...\", \"thumbnail\": \"https://i.ytimg.com/vi/z5yer1ZXzr4/hqdefault.jpg\", \"time\": \"9/28/2026\", \"url\": \"https://www.youtube.com/watch?v=z5yer1ZXzr4\"}, {\"id\": \"vMwV4AKXI8c\", \"title\": \"\\\"UV Printing\\\" is a GAME CHANGER!\", \"thumbnail\": \"https://i.ytimg.com/vi/vMwV4AKXI8c/hqdefault.jpg\", \"time\": \"9/25/2026\", \"url\": \"https://www.youtube.com/watch?v=vMwV4AKXI8c\"}, {\"id\": \"tkHzfNZCZiI\", \"title\": \"BEST. UPGRADE. EVER. - Formlabs 4L 3D Printer!\", \"thumbnail\": \"https://i.ytimg.com/vi/tkHzfNZCZiI/hqdefault.jpg\", \"time\": \"9/19/2026\", \"url\": \"https://www.youtube.com/watch?v=tkHzfNZCZiI\"}, {\"id\": \"NGch1vjkT8I\", \"title\": \"Can I make a STOP-MOTION Animation on a Tablet?\", \"thumbnail\": \"https://i.ytimg.com/vi/NGch1vjkT8I/hqdefault.jpg\", \"time\": \"9/12/2026\", \"url\": \"https://www.youtube.com/watch?v=NGch1vjkT8I\"}]}",
+      "fetched_at": 1791206673437
+    },
+    {
+      "cache_key": "youtube:UCxcnsr1R5Ge_fbTu5ajt8DQ",
+      "payload": "{\"videos\": [{\"id\": \"P_oe1D2WrlQ\", \"title\": \"A Boy Named Bob | Episode 83 | The Joy of Bob Ross: A Happy Little Podcast®\", \"thumbnail\": \"https://i.ytimg.com/vi/P_oe1D2WrlQ/hqdefault.jpg\", \"time\": \"10/2/2026\", \"url\": \"https://www.youtube.com/watch?v=P_oe1D2WrlQ\"}, {\"id\": \"_guemdQzmis\", \"title\": \"A Happy Little Weekend Marathon!\", \"thumbnail\": \"https://i.ytimg.com/vi/_guemdQzmis/hqdefault.jpg\", \"time\": \"10/2/2026\", \"url\": \"https://www.youtube.com/watch?v=_guemdQzmis\"}, {\"id\": \"-Y2ZhkuLASU\", \"title\": \"Bob Ross - One Hour Special - Seascape with Lighthouse\", \"thumbnail\": \"https://i.ytimg.com/vi/-Y2ZhkuLASU/hqdefault.jpg\", \"time\": \"9/27/2026\", \"url\": \"https://www.youtube.com/watch?v=-Y2ZhkuLASU\"}]}",
+      "fetched_at": 1791206676025
+    },
+    {
+      "cache_key": "youtube:UChBEbMKI1eCcejTtmI32UEw",
+      "payload": "{\"videos\": [{\"id\": \"QDleZC5l_rk\", \"title\": \"I Asked Famous Youtubers To Cook in Their Homes\", \"thumbnail\": \"https://i.ytimg.com/vi/QDleZC5l_rk/hqdefault.jpg\", \"time\": \"10/4/2026\", \"url\": \"https://www.youtube.com/watch?v=QDleZC5l_rk\"}, {\"id\": \"Fye5U5VtgzM\", \"title\": \"I Tried Fast Food That No Longer Exists\", \"thumbnail\": \"https://i.ytimg.com/vi/Fye5U5VtgzM/hqdefault.jpg\", \"time\": \"9/20/2026\", \"url\": \"https://www.youtube.com/watch?v=Fye5U5VtgzM\"}, {\"id\": \"YxzXd2J0dO8\", \"title\": \"I Tried EVERY Viral Struggle Meal\", \"thumbnail\": \"https://i.ytimg.com/vi/YxzXd2J0dO8/hqdefault.jpg\", \"time\": \"9/6/2026\", \"url\": \"https://www.youtube.com/watch?v=YxzXd2J0dO8\"}, {\"id\": \"4TyPUB6o-t8\", \"title\": \"I Tested The Cheapest VS Most Expensive Kitchen Gadgets\", \"thumbnail\": \"https://i.ytimg.com/vi/4TyPUB6o-t8/hqdefault.jpg\", \"time\": \"8/23/2026\", \"url\": \"https://www.youtube.com/watch?v=4TyPUB6o-t8\"}]}",
+      "fetched_at": 1791206676591
+    },
+    {
+      "cache_key": "youtube:UCRIZtPl9nb9RiXc9btSTQNw",
+      "payload": "{\"videos\": [{\"id\": \"cMZnOz2OIcc\", \"title\": \"Loaded Baked Potato Stuffed French Toast | New Brunch Hack | Food Wishes\", \"thumbnail\": \"https://i.ytimg.com/vi/cMZnOz2OIcc/hqdefault.jpg\", \"time\": \"9/30/2026\", \"url\": \"https://www.youtube.com/watch?v=cMZnOz2OIcc\"}, {\"id\": \"KOWR5FfqdxI\", \"title\": \"Better Than Beef Bolognese! (Budget Turkey and Pork Ragù) | Food Wishes\", \"thumbnail\": \"https://i.ytimg.com/vi/KOWR5FfqdxI/hqdefault.jpg\", \"time\": \"9/23/2026\", \"url\": \"https://www.youtube.com/watch?v=KOWR5FfqdxI\"}, {\"id\": \"6f_1ljmHcCA\", \"title\": \"Easy Sheet Pan Chicken with Caramelized Vegetables | Food Wishes\", \"thumbnail\": \"https://i.ytimg.com/vi/6f_1ljmHcCA/hqdefault.jpg\", \"time\": \"9/16/2026\", \"url\": \"https://www.youtube.com/watch?v=6f_1ljmHcCA\"}, {\"id\": \"ITp_uu2NqfA\", \"title\": \"Apple \\\"Cider Bath\\\" Cinnamon Rolls | Easy No-Knead Dough | Food Wishes\", \"thumbnail\": \"https://i.ytimg.com/vi/ITp_uu2NqfA/hqdefault.jpg\", \"time\": \"9/9/2026\", \"url\": \"https://www.youtube.com/watch?v=ITp_uu2NqfA\"}]}",
+      "fetched_at": 1791206678184
+    },
+    {
+      "cache_key": "youtube:UCUK0HBIBWgM2c4vsPhkYY4w",
+      "payload": "{\"videos\": [{\"id\": \"8nyQWmflve4\", \"title\": \"Camera Shutters are Extremely Fast - The Slow Mo Guys\", \"thumbnail\": \"https://i.ytimg.com/vi/8nyQWmflve4/hqdefault.jpg\", \"time\": \"9/11/2026\", \"url\": \"https://www.youtube.com/watch?v=8nyQWmflve4\"}, {\"id\": \"TOofKvgOARE\", \"title\": \"6ft Man in 6ft Giant Rolling Balloon - The Slow Mo Guys\", \"thumbnail\": \"https://i.ytimg.com/vi/TOofKvgOARE/hqdefault.jpg\", \"time\": \"7/27/2026\", \"url\": \"https://www.youtube.com/watch?v=TOofKvgOARE\"}, {\"id\": \"RCXEsJYuz6U\", \"title\": \"Taking an 8ft Giant Water Balloon to the Chops - The Slow Mo Guys\", \"thumbnail\": \"https://i.ytimg.com/vi/RCXEsJYuz6U/hqdefault.jpg\", \"time\": \"6/28/2026\", \"url\": \"https://www.youtube.com/watch?v=RCXEsJYuz6U\"}, {\"id\": \"u9Sj83_CX6Q\", \"title\": \"Does a Mirror Bend Before it Breaks? Yes. - The Slow Mo Guys\", \"thumbnail\": \"https://i.ytimg.com/vi/u9Sj83_CX6Q/hqdefault.jpg\", \"time\": \"5/31/2026\", \"url\": \"https://www.youtube.com/watch?v=u9Sj83_CX6Q\"}]}",
+      "fetched_at": 1791206680984
+    },
+    {
+      "cache_key": "youtube:UCTvYEid8tmg0jqGPDkehc_Q",
+      "payload": "{\"videos\": [{\"id\": \"a7KXs3f3P5E\", \"title\": \"Preppy Kitchen Everyday Baking - Signed\", \"thumbnail\": \"https://i.ytimg.com/vi/a7KXs3f3P5E/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=a7KXs3f3P5E\"}, {\"id\": \"9OvanR3X59Q\", \"title\": \"The BEST Pumpkin Muffin Recipe\", \"thumbnail\": \"https://i.ytimg.com/vi/9OvanR3X59Q/hqdefault.jpg\", \"time\": \"10/1/2026\", \"url\": \"https://www.youtube.com/watch?v=9OvanR3X59Q\"}, {\"id\": \"5Ymy5mT23Gs\", \"title\": \"Meyer Lemon Biscuit Rolls\", \"thumbnail\": \"https://i.ytimg.com/vi/5Ymy5mT23Gs/hqdefault.jpg\", \"time\": \"9/29/2026\", \"url\": \"https://www.youtube.com/watch?v=5Ymy5mT23Gs\"}, {\"id\": \"D9HI_h6u1Lg\", \"title\": \"The Best Mug Cake Recipe | So Fast!\", \"thumbnail\": \"https://i.ytimg.com/vi/D9HI_h6u1Lg/hqdefault.jpg\", \"time\": \"9/24/2026\", \"url\": \"https://www.youtube.com/watch?v=D9HI_h6u1Lg\"}]}",
+      "fetched_at": 1791206681611
+    },
+    {
+      "cache_key": "rumble:c/SBMowing",
+      "payload": "{\"videos\": [{\"id\": \"v7g02e2\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/fwe2/f2/s8/1/A/G/j/1/AGj1A.OvCc-small-Grandmas-on-OXYGEN-facing-S..jpg\", \"time\": \"Oct 2\", \"title\": \"Grandma’s on OXYGEN, facing SURGERY, and still taking care of her DISABLED son\", \"url\": \"https://rumble.com/v7g02e2-grandmas-on-oxygen-facing-surgery-and-still-taking-care-of-her-disabled-son.html\"}, {\"id\": \"v7fxus6\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/fww1/c6/s8/1/w/u/W/0/wuW0A.OvCc-small-The-owners-WARNED-us-about-..jpg\", \"time\": \"Sep 25\", \"title\": \"The owners WARNED us about what was LIVING in the garage wall\", \"url\": \"https://rumble.com/v7fxus6-the-owners-warned-us-about-what-was-living-in-the-garage-wall.html\"}, {\"id\": \"v7fnccm\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/fwe2/40/s8/1/g/L/4/Y/gL4YA.OvCc-small-One-fall-at-work-took-EVERY..jpg\", \"time\": \"Sep 18\", \"title\": \"One fall at work took EVERYTHING from this man\", \"url\": \"https://rumble.com/v7fnccm-one-fall-at-work-took-everything-from-this-man.html\"}, {\"id\": \"v7fd0c0\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/fwe2/7b/s8/1/W/3/c/X/W3cXA.OvCc-small-This-dad-was-OUT-OF-OPTIONS..jpg\", \"time\": \"Sep 11\", \"title\": \"This dad was OUT OF OPTIONS while trying to keep up with 2 kids\", \"url\": \"https://rumble.com/v7fd0c0-this-dad-was-out-of-options-while-trying-to-keep-up-with-2-kids.html\"}]}",
+      "fetched_at": 1791206821644
+    },
+    {
+      "cache_key": "rumble:c/MajorLeagueFishing",
+      "payload": "{\"videos\": [{\"id\": \"v7g5cx0\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/fww1/a0/s8/1/K/Y/f/2/KYf2A.OvCc-small-THE-HILARY-MARTIN-STORY-Ive..jpg\", \"time\": \"Sep 29\", \"title\": \"THE HILARY MARTIN STORY: “I’ve always just wanted to fish”\", \"url\": \"https://rumble.com/v7g5cx0-the-hilary-martin-story-ive-always-just-wanted-to-fish.html\"}, {\"id\": \"v7ezz6k\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/fww1/ab/s8/1/C/B/U/U/CBUUA.OvCc-small-Day-5-Cal-Lane-on-Lake-Cham..jpg\", \"time\": \"Sep 3\", \"title\": \"Day 5: Cal Lane on Lake Champlain\", \"url\": \"https://rumble.com/v7ezz6k-day-5-cal-lane-on-lake-champlain.html\"}, {\"id\": \"v7eyaxg\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/fwe2/62/s8/1/u/x/B/U/uxBUA.OvCc-small-Bass-Cave-with-Brett-Carnri..jpg\", \"time\": \"Sep 1\", \"title\": \"Bass Cave with Brett Carnright\", \"url\": \"https://rumble.com/v7eyaxg-bass-cave-with-brett-carnright.html\"}, {\"id\": \"v7c3ne6\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/fww1/9e/s8/1/U/e/k/C/UekCA.OvCc-small-FISHING-TOWNS-Pickwick-Lake..jpg\", \"time\": \"Jul 1\", \"title\": \"FISHING TOWNS: Pickwick Lake continues to provide year-round diversity for anglers of all ages\", \"url\": \"https://rumble.com/v7c3ne6-fishing-towns-pickwick-lake-continues-to-provide-year-round-diversity-for-a.html\"}]}",
+      "fetched_at": 1791206821644
+    },
+    {
+      "cache_key": "rumble:c/FowlersMakeryandMischief",
+      "payload": "{\"videos\": [{\"id\": \"v4d1bz3\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/s8/6/F/_/k/U/F_kUp.OvCc.jpg\", \"time\": \"Feb 14\", \"title\": \"Catch and Cook Catfish With A Telescopic Fishing Rod / Day 22 Of 30 Day Survival Challenge Texas\", \"url\": \"https://rumble.com/v4d1bz3-catch-and-cook-catfish-with-a-telescopic-fishing-rod-day-22-of-30-day-survi.html\"}, {\"id\": \"v4d19yc\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/s8/1/K/w/k/U/KwkUp.OvCc-small-Fishing-Fails-At-The-New-Lo.jpg\", \"time\": \"Feb 13\", \"title\": \"Fishing Fails At The New Location / Day 21 Of 30 Day Survival Challenge Texas\", \"url\": \"https://rumble.com/v4d19yc-fishing-fails-at-the-new-location-day-21-of-30-day-survival-challenge-texas.html\"}, {\"id\": \"v4d1230\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/s8/1/m/3/h/U/m3hUp.OvCc-small-MAN-DOWN-Chris-is-GONE-Day-.jpg\", \"time\": \"Feb 12\", \"title\": \"MAN DOWN, Chris is GONE / Day 20 Of 30 Day Survival Challenge Texas\", \"url\": \"https://rumble.com/v4d1230-man-down-chris-is-gone-day-20-of-30-day-survival-challenge-texas.html\"}, {\"id\": \"v4aknix\", \"thumbnail\": \"https://hugh.cdn.rumble.cloud/video/s8/1/z/4/y/E/z4yEp.OvCc-small-Catch-And-Cook-AGAVE-Edible.jpg\", \"time\": \"Feb 1\", \"title\": \"Catch And Cook AGAVE Edible Plants / Day 19 Of 30 Day Survival Challenge Texas\", \"url\": \"https://rumble.com/v4aknix-catch-and-cook-agave-edible-plants-day-19-of-30-day-survival-challenge-texa.html\"}]}",
+      "fetched_at": 1791206821644
+    }
+  ],
+  "edition": "demo",
+  "verified_at": "2026-10-05T13:27:01Z"
+}
