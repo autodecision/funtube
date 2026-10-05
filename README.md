@@ -37,4 +37,4 @@ The app uses a sandboxed renderer with context isolation and no Node integration
 
 ## Sharing on GitHub
 
-The project contains only the demo library. Personal channel exports, databases, credentials, build outputs, and screenshots belong outside the repository or are ignored by `.gitignore`. Saved feeds contain public video metadata and remote image URLs; no video, audio, or thumbnail files are bundled. Channel names and links identify their creators; this app has no affiliation with them. No GitHub repository has been created or published.
+The project contains only the demo library. Personal channel exports, databases, credentials, build outputs, and screenshots belong outside the repository or are ignored by `.gitignore`. Saved feeds contain public video metadata and remote image URLs; no video, audio, or thumbnail files are bundled. Channel names and links identify their creators; this app has no affiliation with them.
