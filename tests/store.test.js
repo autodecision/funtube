@@ -22,11 +22,11 @@ test('migration imports only channels/cache, preserves IDs/order, and persists l
     assert.equal(statSync(dataDir).mode & 0o777, 0o700);
     assert.equal(statSync(join(dataDir, 'funtube.sqlite')).mode & 0o777, 0o600);
     const db = new DatabaseSync(join(dataDir, 'funtube.sqlite'));
-    assert.deepEqual(db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name").all().map((r) => r.name), ['tv_channels', 'tv_feed_cache']);
+    assert.deepEqual(db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name").all().map((r) => r.name), ['tv_channels', 'tv_feed_cache', 'tv_groups']);
     db.close();
     const first = store.allChannels().find((c) => c.enabled && snapshot.cache.some((cache) => cache.cache_key === `${c.platform.toLowerCase()}:${c.channelKey}`));
     const result = await store.feed([first.id]);
-    assert.ok(result.creators[0].videos.length);
+    assert.ok(result.creators[0].videos.length > 4);
     assert.equal(result.creators[0].channelId, first.id);
     assert.throws(() => store.saveKeys({ youtube: 123 }));
     assert.throws(() => store.saveKeys({ secret: 'unexpected' }));
@@ -64,11 +64,11 @@ test('network failures serve the saved feed, and no Firecrawl key preserves Rumb
   try {
     const channel = store.allChannels().find((c) => c.platform === 'YouTube' && snapshot.cache.some((cache) => cache.cache_key === `youtube:${c.channelKey}`));
     const result = await store.feed([channel.id]);
-    assert.ok(result.creators[0].videos.length);
+    assert.ok(result.creators[0].videos.length > 4);
     assert.match(result.warnings[0], /Showing its saved feed/);
     const rumble = store.allChannels().find((c) => c.platform === 'Rumble');
     const rumbleResult = await store.feed([rumble.id]);
     assert.ok(rumbleResult.creators[0].videos.length);
-    assert.match(rumbleResult.warnings[0], /Firecrawl key/);
+    assert.match(rumbleResult.warnings[0], /Showing its saved feed/);
   } finally { globalThis.fetch = originalFetch; store.close(); rmSync(root, { recursive: true, force: true }); }
 });

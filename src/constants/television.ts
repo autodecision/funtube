@@ -14,3 +14,19 @@ export const SECTION_ORDER: Record<string, string[]> = {
   'Food & Cooking': ['Recipes', 'Baking'],
   'Art & Creativity': ['Painting', 'Drawing', 'Digital Art'],
 };
+
+export function formatVideoDate(time?: string, publishedAt?: string): string {
+  if (publishedAt) {
+    const timestamp = Date.parse(publishedAt);
+    if (!isNaN(timestamp)) {
+      if (time && time.includes('approx')) return time;
+      return new Date(timestamp).toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+      });
+    }
+  }
+  return time || 'On demand';
+}
+

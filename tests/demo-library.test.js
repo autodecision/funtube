@@ -23,7 +23,8 @@ test('demo library uses verified provider channels and matching saved feeds', ()
     const cache = snapshot.cache.find((row) => row.cache_key === key);
     assert.ok(cache, `Missing saved feed for ${c.name}`);
     const { videos } = JSON.parse(cache.payload);
-    assert.ok(videos.length > 0 && videos.length <= 4);
+    assert.ok(videos.length > 0 && videos.length <= 1000);
+    assert.ok(videos.some((v) => Date.parse(v.publishedAt) <= Date.now() - 365 * 86400000), `Missing year of history for ${c.name}`);
     for (const v of videos) {
       assert.ok(v.title);
       assert.equal(safeUrl(v.url).hostname, c.platform === 'youtube' ? 'www.youtube.com' : 'rumble.com');

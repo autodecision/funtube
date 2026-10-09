@@ -11,6 +11,7 @@
     "dev": "npm start",
     "build": "tsc --noEmit && vite build",
     "test": "node --test tests/*.test.js",
+    "icons:export": "node scripts/export-icons.js",
     "package": "npm run build && electron-packager . Funtube --out=release --overwrite --ignore='^/(release|test-results|tests|scripts|src|node_modules/.cache)($|/)'"
   },
   "dependencies": {

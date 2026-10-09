@@ -1,9 +1,11 @@
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync, writeFileSync, mkdirSync, chmodSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { initializeChannelTables, createChannelStatements, parseYouTubeRSS, filterYouTubeShorts, fetchYouTubeVideos, parseRumbleMarkdown, resolveChannelFromUrl } from './channels.js';
+import { initializeChannelTables, createChannelStatements, parseYouTubeRSS, filterYouTubeShorts, fetchYouTubeVideos, fetchYouTubeHistory, fetchRumbleHistory, parseRumbleMarkdown, resolveChannelFromUrl } from './channels.js';
 import { fetchRemote } from './network.js';
 import { channelIds, imageUrl, label, safeUrl } from './security.js';
+import { createGroups } from './groups.js';
+import { cleanDescription, fetchVideoDescription } from './video-details.js';
 
 const TTL = 12 * 60 * 60 * 1000;
 
@@ -30,10 +32,24 @@ export function createStore(directory, snapshotPath) {
       writeFileSync(join(directory, 'initialized'), '', { mode: 0o600 });
     } catch (error) { db.exec('ROLLBACK'); throw error; }
   }
+  const demo = JSON.parse(readFileSync(snapshotPath, 'utf8'));
+  for (const entry of demo.cache) {
+    if (!statements.getByKey.get(...entry.cache_key.split(':'))) continue;
+    const cached = statements.getFeedCache.get(entry.cache_key);
+    let existing = { videos: [] };
+    try { if (cached) existing = JSON.parse(cached.payload); } catch { /* replace corrupt cache */ }
+    const incoming = JSON.parse(entry.payload);
+    const videos = [...(existing.videos || []), ...(incoming.videos || [])];
+    const merged = [...new Map(videos.map((v) => [v.id, v])).values()];
+    merged.sort((a, b) => new Date(b.publishedAt || b.time).getTime() - new Date(a.publishedAt || a.time).getTime());
+    if (merged.length > (existing.videos || []).length) statements.setFeedCache.run(entry.cache_key, JSON.stringify({ ...existing, videos: merged }), cached?.fetchedAt || entry.fetched_at);
+  }
+  const groups = createGroups(db);
   const keys = () => ({ youtube: config.youtube || process.env.YOUTUBE_API_KEY || '', firecrawl: config.firecrawl || process.env.FIRECRAWL_API_KEY || '' });
   const status = () => ({ youtube: !!keys().youtube, firecrawl: !!keys().firecrawl });
   const toChannel = (c) => ({ ...c, platform: c.platform === 'youtube' ? 'YouTube' : 'Rumble', avatar: imageUrl(c.avatar) });
   const inflight = new Map();
+  const detailRequests = new Map();
   let activeFetches = 0;
   const queue = [];
   async function limited(work) {
@@ -44,11 +60,12 @@ export function createStore(directory, snapshotPath) {
   function cleanCreator(value, channel) {
     return {
       id: channel.channelKey, channelId: channel.id, name: channel.name, platform: toChannel(channel).platform, avatar: imageUrl(channel.avatar),
-      videos: (Array.isArray(value.videos) ? value.videos : []).slice(0, 4).flatMap((v) => {
+      videos: (Array.isArray(value.videos) ? value.videos : []).slice(0, 1000).flatMap((v) => {
         try {
           const id = label(v.id, 200);
           const thumbnail = imageUrl(v.thumbnail) || (channel.platform === 'youtube' && /^[\w-]{11}$/.test(id) ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : '');
-          return [{ id, title: label(v.title, 1000), thumbnail, time: label(v.time || '', 80), url: safeUrl(v.url).href }];
+          return [{ id, title: label(v.title, 1000), thumbnail, time: label(v.time || '', 80), publishedAt: label(v.publishedAt || '', 80), url: safeUrl(v.url).href,
+            ...(typeof v.description === 'string' ? { description: cleanDescription(v.description) } : {}) }];
         } catch { return []; }
       }),
     };
@@ -59,20 +76,21 @@ export function createStore(directory, snapshotPath) {
     let previous;
     try { if (cached) previous = cleanCreator(JSON.parse(cached.payload), c); } catch { /* discard invalid cache */ }
     if (previous && Date.now() - cached.fetchedAt < TTL) return { creator: previous };
-    if (c.platform === 'rumble' && !keys().firecrawl) {
-      return { creator: previous || cleanCreator({ videos: [] }, c), warning: 'Rumble is showing saved feeds. Add a Firecrawl key in Settings to refresh them.' };
-    }
     try {
       let videos;
       if (c.platform === 'youtube') {
         if (!/^UC[\w-]{22}$/.test(c.channelKey)) throw new Error('Invalid channel');
         if (keys().youtube) videos = await fetchYouTubeVideos(c.channelKey, keys().youtube);
         else {
+          try { videos = await fetchYouTubeHistory(c.channelKey); } catch {
           const res = await fetchRemote(`https://www.youtube.com/feeds/videos.xml?channel_id=${c.channelKey}`, { signal: AbortSignal.timeout(8000) });
           if (!res.ok) throw new Error('Feed unavailable');
-          videos = await filterYouTubeShorts(parseYouTubeRSS(await res.text()).videos);
+          videos = await filterYouTubeShorts(parseYouTubeRSS(await res.text()).videos, 15);
+          }
         }
       } else {
+        try { videos = await fetchRumbleHistory(c.url); } catch {
+        if (!keys().firecrawl) throw new Error('Rumble history unavailable');
         const url = safeUrl(c.url);
         if (url.hostname !== 'rumble.com' || !/^\/(c|user)\/[^/]+\/?$/.test(url.pathname)) throw new Error('Invalid Rumble channel');
         const res = await fetchRemote('https://api.firecrawl.dev/v1/scrape', {
@@ -83,9 +101,12 @@ export function createStore(directory, snapshotPath) {
         const result = await res.json();
         if (!result.success) throw new Error('Feed unavailable');
         videos = parseRumbleMarkdown(result.data?.markdown || '');
+        }
       }
       if (!videos.length) throw new Error('No recent videos');
-      const creator = cleanCreator({ videos }, c);
+      const merged = [...new Map([...videos, ...(previous?.videos || [])].map((v) => [v.id, v])).values()];
+      merged.sort((a, b) => new Date(b.publishedAt || b.time).getTime() - new Date(a.publishedAt || a.time).getTime());
+      const creator = cleanCreator({ videos: merged }, c);
       statements.setFeedCache.run(cacheKey, JSON.stringify(creator), Date.now());
       return { creator };
     } catch {
@@ -94,8 +115,40 @@ export function createStore(directory, snapshotPath) {
   }
   return {
     status,
+    groups: groups.all,
+    saveGroup: groups.save,
+    removeGroup: groups.remove,
+    addGroupPreset: groups.addPreset,
     channels: () => ({ channels: statements.listEnabled.all().map(toChannel) }),
     allChannels: () => statements.listAll.all().map(toChannel),
+    async videoDetails(input) {
+      if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('Invalid video selection');
+      const [channelId] = channelIds([input.channelId]);
+      const videoId = label(input.videoId, 200);
+      const channel = statements.getById.get(channelId);
+      if (!channel?.enabled) throw new Error('Unknown or disabled channel');
+      const cacheKey = `${channel.platform}:${channel.channelKey}`;
+      const cached = statements.getFeedCache.get(cacheKey);
+      const creator = cached && cleanCreator(JSON.parse(cached.payload), channel);
+      const video = creator?.videos.find((item) => item.id === videoId);
+      if (!video) throw new Error('Unknown video');
+      if (typeof video.description === 'string') return { description: video.description };
+      const requestKey = `${channelId}:${videoId}`;
+      if (!detailRequests.has(requestKey)) {
+        const request = limited(async () => {
+          const description = await fetchVideoDescription(video, channel.platform, keys().youtube);
+          const latest = statements.getFeedCache.get(cacheKey);
+          if (latest && statements.getById.get(channelId)) {
+            const payload = JSON.parse(latest.payload);
+            payload.videos = payload.videos.map((item) => item.id === videoId ? { ...item, description } : item);
+            statements.setFeedCache.run(cacheKey, JSON.stringify(payload), latest.fetchedAt);
+          }
+          return { description };
+        }).finally(() => detailRequests.delete(requestKey));
+        detailRequests.set(requestKey, request);
+      }
+      return detailRequests.get(requestKey);
+    },
     async feed(ids) {
       const wanted = channelIds(ids);
       const channels = statements.listEnabled.all().filter((c) => wanted.includes(c.id));
@@ -126,7 +179,8 @@ export function createStore(directory, snapshotPath) {
       const section = label(input.section || '');
       const channel = await resolveChannelFromUrl(url, { firecrawlKey: keys().firecrawl });
       if (statements.getByKey.get(channel.platform, channel.channelKey)) throw new Error('Channel already exists');
-      statements.insert.run(channel.platform,channel.channelKey,channel.name,safeUrl(channel.url).href,imageUrl(channel.avatar),statements.maxPosition.get().maxPosition+1,new Date().toISOString(),category,section);
+      const assignment = groups.ensure(category, section);
+      statements.insert.run(channel.platform,channel.channelKey,channel.name,safeUrl(channel.url).href,imageUrl(channel.avatar),statements.maxPosition.get().maxPosition+1,new Date().toISOString(),assignment.category,assignment.section);
       return { channels: statements.listEnabled.all().map(toChannel) };
     },
     updateChannel(input) {
@@ -136,7 +190,8 @@ export function createStore(directory, snapshotPath) {
       if (typeof input.enabled !== 'boolean') throw new Error('Invalid enabled value');
       const category = label(input.category || 'Uncategorized');
       const section = label(input.section || '');
-      db.prepare('UPDATE tv_channels SET enabled=?,category=?,section=? WHERE id=?').run(input.enabled ? 1 : 0,category,section,id);
+      const assignment = groups.ensure(category, section);
+      db.prepare('UPDATE tv_channels SET enabled=?,category=?,section=? WHERE id=?').run(input.enabled ? 1 : 0,assignment.category,assignment.section,id);
       return this.allChannels();
     },
     removeChannel(id) {

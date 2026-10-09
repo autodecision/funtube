@@ -1,16 +1,17 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 
-// The "now previewing" program from the Television guide. Television sets it on
-// hover; the SecondaryInfoBar renders it above the Media-mode toggle. Keeping it
-// in context (rather than inside Television) lets the preview live in a sibling
-// panel across the layout — the same reason AuthContext exists.
 export type TelevisionPreview = {
+  id: string;
+  channelId: number;
   title: string;
   thumbnail: string;
   url: string;
   time: string;
+  publishedAt?: string;
+  description?: string;
   platform: string;
   creatorName: string;
+  channelNumber: number;
 };
 
 type TelevisionPreviewContextValue = {

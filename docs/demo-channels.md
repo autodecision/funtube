@@ -28,4 +28,4 @@ Checked October 5, 2026. 20 YouTube channels and 3 Rumble channels, selected for
 | [Major League Fishing](https://rumble.com/c/MajorLeagueFishing) | Rumble | Nature & Outdoors / Fishing |
 | [Fowler's Makery and Mischief](https://rumble.com/c/FowlersMakeryandMischief) | Rumble | Nature & Outdoors / Making |
 
-The bundled cache contains up to four selected public video records per channel. YouTube refreshes from public RSS without a key; refreshing Rumble requires a Firecrawl key in local Settings. Cached Rumble examples work without one.
+The bundled cache covers at least a year of regular uploads; dates from public channel lists are approximate. Newer / Older controls page through the history. Public YouTube channel pages refresh history without a key, falling back to RSS if unavailable; Rumble channel pages also refresh history without a key, with an optional Firecrawl fallback in local Settings. Cached Rumble examples work without one.

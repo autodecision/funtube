@@ -210,9 +210,11 @@ export function parseYouTubeRSS(xml) {
     const thumbnail = (entry.match(/<media:thumbnail url="([^"]*)"/) || [])[1]
       || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
     const published = (entry.match(/<published>([^<]*)<\/published>/) || [])[1] || '';
+    const description = entry.match(/<media:description>([\s\S]*?)<\/media:description>/)?.[1];
     return {
       id: videoId,
       title: decodeEntities(title),
+      ...(description !== undefined ? { description: decodeEntities(description) } : {}),
       thumbnail,
       time: published ? new Date(published).toLocaleDateString() : '',
       url: `https://www.youtube.com/watch?v=${videoId}`,
@@ -221,43 +223,97 @@ export function parseYouTubeRSS(xml) {
   return { channelTitle, videos };
 }
 
-/**
- * Pull a channel's recent uploads via the YouTube Data API instead of RSS.
- * RSS caps at ~15 entries with no pagination, which starves Short-heavy channels
- * of full-length videos. The uploads playlist id is just the channel id with the
- * "UC" prefix swapped for "UU", so one playlistItems.list call (1 quota unit)
- * returns up to 50 recent uploads. Shorts are then dropped by filterYouTubeShorts.
- */
-export async function fetchYouTubeVideos(channelId, apiKey, keep = 4) {
-  const uploadsPlaylistId = `UU${channelId.slice(2)}`;
-  const api = new URL('https://www.googleapis.com/youtube/v3/playlistItems');
-  api.searchParams.set('part', 'snippet,contentDetails');
-  api.searchParams.set('playlistId', uploadsPlaylistId);
-  api.searchParams.set('maxResults', '50');
-  api.searchParams.set('key', apiKey);
+export function parseYouTubeHistoryPage(data) {
+  const videos = [];
+  let continuation = '';
+  function visit(value) {
+    if (!value || typeof value !== 'object') return;
+    const model = value.lockupViewModel;
+    const renderer = value.videoRenderer;
+    if (model?.contentType === 'LOCKUP_CONTENT_TYPE_VIDEO' || renderer) {
+      const id = model?.contentId || renderer.videoId;
+      const metadata = model?.metadata?.lockupMetadataViewModel;
+      const parts = metadata?.metadata?.contentMetadataViewModel?.metadataRows?.flatMap((row) => row.metadataParts || []) || [];
+      const age = parts.map((part) => part.accessibilityLabel || part.text?.content || '').find((text) => /ago$/.test(text))
+        || renderer?.publishedTimeText?.simpleText || renderer?.publishedTimeText?.runs?.map((r) => r.text).join('') || '';
+      const title = metadata?.title?.content || renderer?.title?.runs?.map((r) => r.text).join('') || '';
+      const match = age.match(/(\d+)\s*(second|minute|hour|day|week|month|year)/i);
+      let publishedAt = '';
+      if (match) {
+        const days = { second: 1 / 86400, minute: 1 / 1440, hour: 1 / 24, day: 1, week: 7, month: 31, year: 366 }[match[2].toLowerCase()];
+        publishedAt = new Date(Date.now() - Number(match[1]) * days * 86400000).toISOString();
+      }
+      if (/^[\w-]{11}$/.test(id) && title) videos.push({ id, title, publishedAt, time: age ? `${age} (approx.)` : '', thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`, url: `https://www.youtube.com/watch?v=${id}` });
+      return;
+    }
+    if (value.continuationItemRenderer) continuation = value.continuationItemRenderer.continuationEndpoint?.continuationCommand?.token || continuation;
+    for (const child of Object.values(value)) visit(child);
+  }
+  visit(data);
+  return { videos, continuation };
+}
 
-  const res = await fetchRemote(api, { signal: AbortSignal.timeout(10000) });
-  if (!res.ok) throw new Error(`YouTube Data API playlistItems failed (${res.status})`);
-  const json = await res.json();
+export async function fetchYouTubeHistory(channelId) {
+  const headers = { 'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9' };
+  const response = await fetchRemote(`https://www.youtube.com/channel/${channelId}/videos?hl=en`, { headers, signal: AbortSignal.timeout(15000) });
+  if (!response.ok) throw new Error('Upload history unavailable');
+  const html = await response.text();
+  const initial = html.match(/(?:var ytInitialData = |window\["ytInitialData"\] = )(\{[^\n]+?\});/);
+  if (!initial) throw new Error('Upload history unavailable');
+  const data = JSON.parse(initial[1]);
+  const tabs = data.contents?.twoColumnBrowseResultsRenderer?.tabs || [];
+  let page = tabs.find((tab) => tab.tabRenderer?.selected)?.tabRenderer?.content;
+  if (!page) throw new Error('Upload history unavailable');
+  const clientVersion = html.match(/"INNERTUBE_CLIENT_VERSION":"([^"]+)"/)?.[1];
+  const videos = new Map();
+  const cutoff = Date.now() - 400 * 86400000;
+  for (let index = 0; index < 34; index++) {
+    const parsed = parseYouTubeHistoryPage(page);
+    for (const video of parsed.videos) videos.set(video.id, video);
+    if (!parsed.continuation || !clientVersion || videos.size >= 1000 || parsed.videos.some((v) => v.publishedAt && Date.parse(v.publishedAt) <= cutoff)) break;
+    const next = await fetchRemote('https://www.youtube.com/youtubei/v1/browse', {
+      method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ context: { client: { clientName: 'WEB', clientVersion, hl: 'en', gl: 'US' } }, continuation: parsed.continuation }),
+      signal: AbortSignal.timeout(15000),
+    });
+    if (!next.ok) throw new Error('Upload history unavailable');
+    page = await next.json();
+  }
+  if (!videos.size) throw new Error('Upload history unavailable');
+  return [...videos.values()].slice(0, 1000);
+}
 
-  const candidates = (json.items || [])
-    .map((item) => {
-      const videoId = item.contentDetails?.videoId || item.snippet?.resourceId?.videoId || '';
+export async function fetchYouTubeVideos(channelId, apiKey, keep = 1000) {
+  const cutoff = new Date();
+  cutoff.setFullYear(cutoff.getFullYear() - 1);
+  const candidates = [];
+  let pageToken = '';
+  for (let page = 0; page < 20; page++) {
+    const api = new URL('https://www.googleapis.com/youtube/v3/playlistItems');
+    api.searchParams.set('part', 'snippet,contentDetails');
+    api.searchParams.set('playlistId', `UU${channelId.slice(2)}`);
+    api.searchParams.set('maxResults', '50');
+    api.searchParams.set('key', apiKey);
+    if (pageToken) api.searchParams.set('pageToken', pageToken);
+    const res = await fetchRemote(api, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) throw new Error(`YouTube Data API playlistItems failed (${res.status})`);
+    const json = await res.json();
+    let reachedCutoff = false;
+    for (const item of json.items || []) {
+      const id = item.contentDetails?.videoId || item.snippet?.resourceId?.videoId || '';
       const sn = item.snippet || {};
+      const publishedAt = item.contentDetails?.videoPublishedAt || sn.publishedAt || '';
+      if (publishedAt && new Date(publishedAt) <= cutoff) reachedCutoff = true;
+      if (!id || ['Private video', 'Deleted video'].includes(sn.title)) continue;
       const thumbs = sn.thumbnails || {};
-      const thumbnail = (thumbs.high || thumbs.medium || thumbs.default || {}).url
-        || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-      const published = item.contentDetails?.videoPublishedAt || sn.publishedAt || '';
-      return {
-        id: videoId,
-        title: decodeEntities(sn.title || ''),
-        thumbnail,
-        time: published ? new Date(published).toLocaleDateString() : '',
-        url: `https://www.youtube.com/watch?v=${videoId}`,
-      };
-    })
-    .filter((v) => v.id);
-
+      candidates.push({ id, title: decodeEntities(sn.title || ''), ...(typeof sn.description === 'string' ? { description: sn.description } : {}),
+        thumbnail: (thumbs.high || thumbs.medium || thumbs.default || {}).url || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+        publishedAt, time: publishedAt ? new Date(publishedAt).toLocaleDateString() : '',
+        url: `https://www.youtube.com/watch?v=${id}` });
+    }
+    pageToken = json.nextPageToken || '';
+    if (!pageToken || reachedCutoff) break;
+  }
   return filterYouTubeShorts(candidates, keep);
 }
 
@@ -266,7 +322,7 @@ export async function fetchYouTubeVideos(channelId, apiKey, keep = 4) {
 // 50-video uploads list doesn't fan out into 50 HEAD requests.
 export async function filterYouTubeShorts(videos, keep = 4) {
   const kept = [];
-  const batchSize = keep * 2;
+  const batchSize = 8;
   for (let i = 0; i < videos.length && kept.length < keep; i += batchSize) {
     const batch = videos.slice(i, i + batchSize);
     const checks = await Promise.all(
@@ -295,6 +351,39 @@ async function isYouTubeShort(videoId) {
   } catch {
     return false; // on error, assume not a Short rather than dropping the video
   }
+}
+
+export function parseRumbleHistoryPage(html) {
+  const videos = new Map();
+  for (const match of html.matchAll(/<script type="application\/json">\s*([\s\S]*?)\s*<\/script>/g)) {
+    let data;
+    try { data = JSON.parse(match[1]); } catch { continue; }
+    for (const item of data.items || []) {
+      if (item.object_type !== 'video' || item.is_short || item.live || item.live_placeholder || !item.permalink_id) continue;
+      videos.set(item.permalink_id, { id: item.permalink_id, title: item.title, thumbnail: item.thumb,
+        publishedAt: item.upload_date || '', time: (item.upload_date || '').slice(0, 10), url: item.url });
+    }
+  }
+  return [...videos.values()];
+}
+
+export async function fetchRumbleHistory(channelUrl) {
+  const canonical = safeUrl(channelUrl);
+  if (canonical.hostname !== 'rumble.com' || !/^\/(c|user)\/[^/]+\/?$/.test(canonical.pathname)) throw new Error('Invalid Rumble channel');
+  const videos = new Map();
+  const cutoff = Date.now() - 400 * 86400000;
+  for (let page = 1; page <= 34; page++) {
+    const url = new URL(canonical);
+    if (page > 1) url.searchParams.set('page', String(page));
+    const res = await fetchRemote(url.href, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(15000) });
+    if (!res.ok) throw new Error('Rumble history unavailable');
+    const parsed = parseRumbleHistoryPage(await res.text());
+    const before = videos.size;
+    for (const video of parsed) videos.set(video.id, video);
+    if (videos.size === before || videos.size >= 1000 || parsed.some((v) => v.publishedAt && Date.parse(v.publishedAt) <= cutoff)) break;
+  }
+  if (!videos.size) throw new Error('Rumble history unavailable');
+  return [...videos.values()].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt)).slice(0, 1000);
 }
 
 export function parseRumbleMarkdown(markdown) {

@@ -1,257 +1,45 @@
-/* Television "guide" — an old-school cable channel menu. Categories collapse;
-   each channel is a row of program cells; the focused program previews in the
-   bottom detail bar (the only place a video thumbnail loads). */
-
-.tv-guide {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  color: #eaf2ff;
-  font-family: 'Outfit', system-ui, sans-serif;
-  background:
-    radial-gradient(120% 80% at 50% -10%, rgba(60, 110, 200, 0.35), transparent 60%),
-    linear-gradient(180deg, #0a1c46 0%, #081634 45%, #050f26 100%);
+.tv-guide { height: 100%; display: flex; flex-direction: column; color: #dbe6fc; background: linear-gradient(110deg, #0a1e50, #061337 70%); }
+.guide-column-headings { display: grid; grid-template-columns: var(--channel-width) minmax(0, 1fr); flex-shrink: 0; height: 33px; background: linear-gradient(#244f8c, #103574 50%, #0b265c 51%, #123575); border-top: 1px solid #6888ba; border-bottom: 2px ridge #7796c6; padding-right: 10px; color: #d3e2fa; font-weight: bold; font-size: 12px; text-shadow: 1px 1px 2px #00122a; letter-spacing: .04em; }
+.guide-column-headings > span { padding: 8px 16px; }
+.guide-column-headings > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.guide-column-headings > div > span { padding: 8px 12px; border-left: 2px ridge #7d98c780; }
+.guide-scroll { flex: 1; min-height: 0; overflow-y: scroll; scrollbar-color: #536fa4 #081838; scrollbar-width: thin; }
+.guide-row { display: grid; grid-template-columns: var(--channel-width) minmax(0, 1fr); min-height: 63px; }
+.row-channel { display: flex; align-items: center; gap: 10px; padding: 8px 12px; color: #d6ddaf; text-decoration: none; background: linear-gradient(90deg, #020813, #071229); border-bottom: 1px solid #31415f; border-right: 2px ridge #44639a; min-width: 0; }
+.row-channel:hover { background: #152547; }
+.row-channel-held { background: linear-gradient(90deg, #0e2759, #143577); border-right: 2px solid #65d9ff; }
+.row-num { font-variant-numeric: tabular-nums; font-size: 18px; color: #cbd3a7; flex-shrink: 0; text-shadow: 1px 2px #000; }
+.row-channel-details { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.row-name { color: #d9e1f2; font-size: 12px; line-height: 1.18; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.row-provider { color: #9cacca; font-size: 9px; text-transform: uppercase; letter-spacing: .05em; }
+.row-section { display: flex; align-items: center; gap: 4px; font-size: 9px; color: #a6bbdb; }
+.row-section svg { width: 13px; height: 13px; flex-shrink: 0; }
+.row-cells { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); min-width: 0; gap: 2px; padding: 2px 2px 0 0; }
+.cell { display: flex; align-items: center; min-width: 0; padding: 9px 12px; border: 2px ridge #526fa8; border-radius: 2px; background: linear-gradient(110deg, #112756, #081638); overflow: hidden; }
+.cell-video { text-decoration: none; color: #dce6fb; text-align: left; width: 100%; }
+.cell-video:hover { background: #233e70; }
+.cell-focused, .cell-focused:hover { background: linear-gradient(110deg, #1554af, #0c3780); border: 2px solid #65d9ff; color: #effaff; box-shadow: inset 0 0 0 1px #bbefff30, 0 0 8px #46bfff24; }
+.cell-title { font-size: 15px; line-height: 1.25; font-weight: 600; text-shadow: 1px 2px 1px #0009; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cell-empty { grid-column: 1 / -1; color: #b4c1dc; font-size: 13px; }
+.cell-unavailable { color: #8fa2c5; font-size: 12px; font-style: italic; }
+.cell-loading { color: #9cb2d9; }
+.guide-status { padding: 30px; color: #bccfeb; }
+.guide-notice { flex-shrink: 0; margin: 0; padding: 7px 14px; background: #212c41; color: #e3d3ac; font-size: 11px; line-height: 1.4; border-bottom: 1px solid #737150; }
+@media (max-width: 1000px) {
+  .row-channel { padding: 6px 9px; gap: 8px; }
+  .row-num { font-size: 16px; }
+  .row-name { font-size: 11px; }
+  .cell { padding: 7px 9px; }
+  .cell-title { font-size: 13px; }
+  .guide-column-headings { font-size: 10px; }
+  .guide-column-headings > div > span { padding-left: 10px; }
+  .guide-row { min-height: 59px; }
 }
 
-/* ── Top bar ──────────────────────────────────────────────────────────── */
-.guide-topbar {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 1.25rem 1.75rem 0.75rem;
-  flex-shrink: 0;
-}
-
-.guide-clock {
-  font-size: 0.95rem;
-  color: rgba(180, 205, 255, 0.7);
-  letter-spacing: 0.02em;
-}
-
-.guide-brand {
-  font-size: 2.4rem;
-  font-weight: 300;
-  line-height: 1;
-  color: #dfeaff;
-  letter-spacing: 0.01em;
-  text-shadow: 0 2px 14px rgba(80, 140, 255, 0.4);
-}
-
-.guide-status {
-  padding: 2rem 1.75rem;
-  color: rgba(200, 220, 255, 0.7);
-  font-size: 1.1rem;
-}
-.guide-status-error { color: #ff9a9a; }
-
-/* ── Scrollable guide body ────────────────────────────────────────────── */
-.guide-scroll {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding: 0.5rem 1rem 1rem;
-}
-
-.guide-category { margin-bottom: 0.25rem; }
-
-.cat-header,
-.section-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  text-align: left;
-  font-family: inherit;
-  transition: background 0.15s ease;
-}
-
-.cat-header {
-  padding: 0.7rem 0.75rem;
-  margin-top: 0.4rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: #bcd4ff;
-  border-bottom: 1px solid rgba(120, 165, 255, 0.22);
-}
-.cat-header:hover { background: rgba(120, 165, 255, 0.08); }
-
-.section-header {
-  padding: 0.5rem 0.75rem 0.5rem 1.9rem;
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: rgba(190, 212, 255, 0.85);
-}
-.section-header:hover { background: rgba(120, 165, 255, 0.06); }
-
-.chevron {
-  font-size: 0.7rem;
-  width: 0.9rem;
-  color: rgba(150, 190, 255, 0.8);
-  flex-shrink: 0;
-}
-
-.cat-name, .section-name { flex: 0 0 auto; }
-
-.cat-count {
-  margin-left: auto;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: rgba(160, 190, 255, 0.6);
-  background: rgba(120, 165, 255, 0.12);
-  border-radius: 1rem;
-  padding: 0.05rem 0.5rem;
-  letter-spacing: 0;
-}
-
-/* ── Channel rows ─────────────────────────────────────────────────────── */
-.guide-rows { padding: 0.2rem 0 0.6rem; }
-
-.guide-row {
-  display: grid;
-  grid-template-columns: 230px 1fr;
-  gap: 0.4rem;
-  margin-bottom: 0.4rem;
-  height: 4.2rem;
-}
-
-.row-channel {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.6rem;
-  text-decoration: none;
-  color: inherit;
-  background: rgba(10, 28, 70, 0.55);
-  border: 1px solid rgba(120, 165, 255, 0.18);
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-.row-channel:hover { border-color: rgba(150, 195, 255, 0.45); }
-
-.row-num {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #6fb4ff;
-  font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
-  width: 1.9rem;
-}
-
-.row-logo {
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 0.35rem;
-  object-fit: cover;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.08);
-}
-.row-logo-blank { display: inline-block; }
-
-.row-name {
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: #e9f1ff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.row-cells {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.4rem;
-}
-
-.cell {
-  border-radius: 0.5rem;
-  padding: 0.45rem 0.65rem;
-  min-height: 2.6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.2rem;
-  overflow: hidden;
-}
-
-.cell-video {
-  text-decoration: none;
-  color: #eaf2ff;
-  background: rgba(40, 80, 160, 0.28);
-  border: 1px solid rgba(120, 165, 255, 0.2);
-  cursor: pointer;
-  transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
-}
-.cell-video:hover { background: rgba(60, 110, 200, 0.4); }
-
-.cell-focused {
-  background: rgba(90, 150, 240, 0.45);
-  border-color: rgba(180, 215, 255, 0.95);
-  box-shadow: 0 0 0 1px rgba(180, 215, 255, 0.6), 0 4px 16px rgba(40, 90, 190, 0.45);
-}
-
-.cell-title {
-  font-size: 0.86rem;
-  line-height: 1.25;
-  font-weight: 500;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.cell-time {
-  font-size: 0.72rem;
-  color: rgba(190, 210, 255, 0.6);
-}
-
-.cell-empty {
-  align-items: center;
-  justify-content: center;
-  color: rgba(190, 210, 255, 0.45);
-  font-size: 0.82rem;
-  font-style: italic;
-  border: 1px dashed rgba(120, 165, 255, 0.18);
-  grid-column: 1 / -1;
-}
-
-.cell-skeleton {
-  background: linear-gradient(90deg, rgba(120, 165, 255, 0.08), rgba(120, 165, 255, 0.16), rgba(120, 165, 255, 0.08));
-  background-size: 200% 100%;
-  animation: cell-shimmer 1.3s ease-in-out infinite;
-  border: 1px solid rgba(120, 165, 255, 0.1);
-}
-@keyframes cell-shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* ── Program preview ──────────────────────────────────────────────────── */
-/* The focused program previews in the SecondaryInfoBar (see SecondaryInfoBar.css
-   .tv-preview); only .platform-badge is shared back here for the guide cells. */
-.platform-badge {
-  display: inline-block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.18rem 0.55rem;
-  border-radius: 1rem;
-  font-weight: 700;
-}
-.platform-badge.youtube {
-  background: rgba(255, 0, 0, 0.15);
-  color: #ff8a8a;
-  border: 1px solid rgba(255, 0, 0, 0.3);
-}
-.platform-badge.rumble {
-  background: rgba(133, 199, 66, 0.15);
-  color: #a2e854;
-  border: 1px solid rgba(133, 199, 66, 0.3);
-}
+.guide-history { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 12px; font-size: 12px; background: #102754; }
+.guide-history button { color: #dbe6fc; background: #203e70; border: 1px solid #7796c6; padding: 5px 12px; cursor: pointer; }
+.guide-history button:disabled { opacity: .4; cursor: default; }
+.guide-sections { display: flex; flex-shrink: 0; gap: 7px; padding: 7px 12px; overflow-x: auto; background: #0b1d40; border-bottom: 1px solid #3f5983; scrollbar-width: thin; }
+.guide-sections button { display: flex; align-items: center; flex-shrink: 0; gap: 7px; color: #bcd1ee; background: #152e56; border: 1px solid #3d5d8b; padding: 6px 10px; font-size: 12px; }
+.guide-sections svg { width: 20px; height: 20px; }
+.guide-sections button[aria-pressed=true] { background: #3d5056; color: #fff1b9; border-color: #c4c291; }

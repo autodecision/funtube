@@ -22,6 +22,8 @@ function openWindow() {
     title: 'Funtube', width: 1380, height: 900, minWidth: 850, minHeight: 600, backgroundColor: '#081634',
     webPreferences: { preload: join(root, 'electron/preload.cjs'), nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true, webviewTag: false },
   });
+  window.removeMenu();
+  window.maximize();
   window.webContents.setWindowOpenHandler(({ url }) => { void external(url); return { action: 'deny' }; });
   window.webContents.on('will-navigate', (event, url) => { if (url !== APP_URL) { event.preventDefault(); void external(url); } });
   window.webContents.on('will-attach-webview', (event) => event.preventDefault());
@@ -40,18 +42,16 @@ if (ownsLock) app.whenReady().then(() => {
   store = createStore(app.getPath('userData'), join(root, 'data/channel-snapshot.json'));
   const handlers = {
     channels: () => store.channels(), feed: (ids) => store.feed(ids), settings: () => store.status(),
+    'video-details': (input) => store.videoDetails(input),
     'save-keys': (keys) => store.saveKeys(keys), 'all-channels': () => store.allChannels(),
     'add-channel': (input) => store.addChannel(input), 'update-channel': (input) => store.updateChannel(input), 'remove-channel': (id) => store.removeChannel(id),
+    groups: () => store.groups(), 'save-group': (input) => store.saveGroup(input), 'remove-group': (id) => store.removeGroup(id), 'add-group-preset': (name) => store.addGroupPreset(name),
   };
   for (const [name, handler] of Object.entries(handlers)) ipcMain.handle(`funtube:${name}`, (event, value) => {
     assertSender(event, window?.webContents);
     return handler(value);
   });
-  Menu.setApplicationMenu(Menu.buildFromTemplate([
-    { label: 'Funtube', submenu: [{ role: 'quit' }] },
-    { role: 'editMenu' },
-    { label: 'View', submenu: [{ role: 'reload' }, { role: 'resetZoom' }, { role: 'zoomIn' }, { role: 'zoomOut' }, { role: 'togglefullscreen' }] },
-  ]));
+  Menu.setApplicationMenu(null);
   openWindow();
   app.on('activate', () => { if (!BrowserWindow.getAllWindows().length) openWindow(); });
 });
