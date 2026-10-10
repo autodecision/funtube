@@ -6,6 +6,7 @@ import { fetchRemote } from './network.js';
 import { channelIds, imageUrl, label, safeUrl } from './security.js';
 import { createGroups } from './groups.js';
 import { cleanDescription, fetchVideoDescription } from './video-details.js';
+import { VALID_THEME_IDS } from '../shared/themes.js';
 
 const TTL = 12 * 60 * 60 * 1000;
 
@@ -21,6 +22,17 @@ export function createStore(directory, snapshotPath) {
   const configPath = join(directory, 'feed-settings.json');
   let config = existsSync(configPath) ? JSON.parse(readFileSync(configPath, 'utf8')) : {};
   if (existsSync(configPath)) chmodSync(configPath, 0o600);
+  const themePath = join(directory, 'theme.json');
+  let currentTheme = 'blue';
+  if (existsSync(themePath)) {
+    try {
+      const data = JSON.parse(readFileSync(themePath, 'utf8'));
+      const t = typeof data?.theme === 'string' ? data.theme.toLowerCase().trim() : '';
+      if (t === 'orage') currentTheme = 'orange';
+      else if (VALID_THEME_IDS.has(t)) currentTheme = t;
+    } catch { /* use default theme */ }
+    chmodSync(themePath, 0o600);
+  }
   if (!db.prepare('SELECT COUNT(*) AS n FROM tv_channels').get().n && !existsSync(join(directory, 'initialized'))) {
     const snapshot = JSON.parse(readFileSync(snapshotPath, 'utf8'));
     const insert = db.prepare('INSERT INTO tv_channels (id,platform,channel_key,name,url,avatar,position,enabled,created_at,category,section) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
@@ -110,7 +122,9 @@ export function createStore(directory, snapshotPath) {
       statements.setFeedCache.run(cacheKey, JSON.stringify(creator), Date.now());
       return { creator };
     } catch {
-      return { creator: previous || cleanCreator({ videos: [] }, c), warning: `Could not refresh ${c.name}. ${previous ? 'Showing its saved feed.' : 'Try again later.'}` };
+      if (previous) statements.setFeedCache.run(cacheKey, JSON.stringify(previous), Date.now());
+      const firecrawlNotice = c.platform === 'rumble' && !keys().firecrawl ? ' Add a Firecrawl key in Settings to refresh Rumble.' : '';
+      return { creator: previous || cleanCreator({ videos: [] }, c), warning: `Could not refresh ${c.name}. ${previous ? 'Showing its saved feed.' : 'Try again later.'}${firecrawlNotice}` };
     }
   }
   return {
@@ -205,6 +219,17 @@ export function createStore(directory, snapshotPath) {
         db.exec('COMMIT');
       } catch (error) { db.exec('ROLLBACK'); throw error; }
       return this.allChannels();
+    },
+    getTheme: () => currentTheme,
+    saveTheme(themeInput) {
+      if (typeof themeInput !== 'string') throw new Error('Invalid theme');
+      const clean = themeInput.toLowerCase().trim();
+      const normalized = clean === 'orage' ? 'orange' : clean;
+      if (!VALID_THEME_IDS.has(normalized)) throw new Error('Invalid theme');
+      currentTheme = normalized;
+      writeFileSync(themePath, JSON.stringify({ theme: currentTheme }), { mode: 0o600 });
+      chmodSync(themePath, 0o600);
+      return currentTheme;
     },
     close: () => db.close(),
   };

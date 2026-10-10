@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useTelevisionPreview } from '../contexts/TelevisionPreviewContext';
-import { CATEGORY_ORDER, SECTION_ORDER, formatVideoDate } from '../constants/television';
+import { CATEGORY_ORDER, SECTION_ORDER, formatVideoDate, getCategoryChannelBase, formatChannelNumber } from '../constants/television';
 import type { Channel, GuideGroup } from '../bridge';
 import GuideIcon from './GuideIcon';
 import '../styles/Television.css';
 
 type Creator = Awaited<ReturnType<Window['funtube']['feed']>>['creators'][number];
 type Video = Creator['videos'][number];
-type Focused = { video: Video; channel: Channel; number: number };
+type Focused = { video: Video; channel: Channel; number: string };
 const orderIndex = (list: string[], value: string) => {
   const i = list.indexOf(value);
   return i === -1 ? list.length : i;
@@ -42,12 +42,26 @@ export default function Television({ category, section, onSectionChange, groups 
   };
   const currentCategory = categories.find((group) => group.name === category);
   const sections = groups.filter((group) => group.parentId === currentCategory?.id);
-  const ordered = useMemo(() => channels.slice().sort((a, b) =>
-    orderIndex(categoryNames, a.category) - orderIndex(categoryNames, b.category)
-    || a.category.localeCompare(b.category)
-    || orderIndex(sectionNames(a.category), a.section) - orderIndex(sectionNames(b.category), b.section)
-    || a.position - b.position,
-  ).map((channel, index) => ({ channel, number: 201 + index })), [channels, groups]);
+  const ordered = useMemo(() => {
+    const sorted = channels.slice().sort((a, b) => {
+      const aBase = getCategoryChannelBase(a.category, categoryNames);
+      const bBase = getCategoryChannelBase(b.category, categoryNames);
+      if (aBase !== bBase) return aBase - bBase;
+      if (a.category !== b.category) return a.category.localeCompare(b.category);
+      const aSecIndex = orderIndex(sectionNames(a.category), a.section);
+      const bSecIndex = orderIndex(sectionNames(b.category), b.section);
+      if (aSecIndex !== bSecIndex) return aSecIndex - bSecIndex;
+      if (a.section !== b.section) return a.section.localeCompare(b.section);
+      return a.position - b.position;
+    });
+    const counts: Record<number, number> = {};
+    return sorted.map((channel) => {
+      const base = getCategoryChannelBase(channel.category, categoryNames);
+      const offset = counts[base] || 0;
+      counts[base] = offset + 1;
+      return { channel, number: formatChannelNumber(base, offset) };
+    });
+  }, [channels, groups]);
   const visible = ordered.filter(({ channel }) => (category === 'All channels' || channel.category === category) && (!section || channel.section === section));
 
   useEffect(() => {
@@ -57,7 +71,10 @@ export default function Television({ category, section, onSectionChange, groups 
       window.funtube.feed(ids).then((data) => {
         if (cancelled) return;
         setCreators((previous) => ({ ...previous, ...Object.fromEntries(data.creators.map((creator) => [creator.channelId, creator])) }));
-        if (data.warnings.length) setError('Some feeds could not refresh. Saved videos are shown where available. Check Video feeds in Settings.');
+        if (data.warnings.length) {
+          const keyWarning = data.warnings.find((w) => /firecrawl|key/i.test(w));
+          setError(keyWarning || 'Some feeds could not refresh. Saved videos are shown where available. Check Video feeds in Settings.');
+        }
       }).catch(() => {
         if (!cancelled) setFailed((previous) => new Set([...previous, ...ids]));
       });
@@ -108,7 +125,10 @@ export default function Television({ category, section, onSectionChange, groups 
     </div>}
     <div className="guide-history"><button disabled={historyPage === 0} onClick={() => changePage(historyPage - 1)}>← Newer</button><span>{historyPage === 0 ? 'Latest uploads' : `Older uploads · page ${historyPage + 1}`} · select a show for details above</span><button disabled={historyPage >= maxPage} onClick={() => changePage(historyPage + 1)}>Older →</button></div>
     <div className="guide-column-headings" aria-hidden="true"><span>CHANNEL</span><div><span>{historyPage ? `UPLOAD ${historyPage * 4 + 1}` : 'LATEST UPLOAD'}</span><span>{historyPage ? `UPLOAD ${historyPage * 4 + 2}` : 'PREVIOUS'}</span><span>{historyPage ? `UPLOAD ${historyPage * 4 + 3}` : 'EARLIER'}</span><span>{historyPage ? `UPLOAD ${historyPage * 4 + 4}` : 'MORE'}</span></div></div>
-    {error && <div className="guide-notice" role="status">{error}</div>}
+    {error && <div className="guide-notice" role="status">
+      <span>{error}</span>
+      <button type="button" className="guide-notice-dismiss" onClick={() => setError('')} aria-label="Dismiss notice">✕</button>
+    </div>}
     <div className="guide-scroll" ref={scroll} aria-label={`${category} video guide`}>
       {loading ? <div className="guide-status" role="status">Tuning in…</div> : visible.length === 0 ? <div className="guide-status">No channels here yet. Add a channel in Settings.</div> : visible.map(({ channel, number }, row) => {
         const creator = creators[channel.id];

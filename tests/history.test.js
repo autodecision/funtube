@@ -12,7 +12,7 @@ test('public upload lists read dates and continuation without picking up menu vi
   assert.equal(result.videos.length, 1);
   assert.equal(result.videos[0].title, 'Older experiment');
   assert.ok(Date.parse(result.videos[0].publishedAt) < Date.now() - 365 * 86400000);
-  assert.match(result.videos[0].time, /approx/);
+  assert.equal(result.videos[0].time, '2 years ago');
   assert.equal(result.continuation, 'next-page');
 });
 

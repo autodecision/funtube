@@ -11,7 +11,7 @@ export default function GroupsSettings({ groups, onChange }: { groups: GuideGrou
   const [activeId, setActiveId] = useState<number | null>(categories[0]?.id || null);
   const active = categories.find((group) => group.id === activeId) || categories[0];
   const sections = groups.filter((group) => group.parentId === active?.id);
-  const [draft, setDraft] = useState<GroupInput>({ kind: 'category', name: '', icon: 'folder' });
+  const [draft, setDraft] = useState<GroupInput>(categories[0] || { kind: 'category', name: '', icon: 'folder' });
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -54,7 +54,7 @@ export default function GroupsSettings({ groups, onChange }: { groups: GuideGrou
 
   return <section className="groups-settings" aria-labelledby="groups-heading">
     <h2 id="groups-heading">Categories & sections</h2>
-    <p>Start with a preset or make your own. Every category and section has its own icon. Add channels to these groups below.</p>
+    <p>Organize your lineup into categories and smaller sections.</p>
     {message && <p className="settings-message" role="status">{message}</p>}
     <details className="preset-browser">
       <summary>Browse {CATEGORY_PRESETS.length} category presets · {CATEGORY_PRESETS.reduce((total, item) => total + item.sections.length, 0)} sections</summary>

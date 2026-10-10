@@ -243,7 +243,7 @@ export function parseYouTubeHistoryPage(data) {
         const days = { second: 1 / 86400, minute: 1 / 1440, hour: 1 / 24, day: 1, week: 7, month: 31, year: 366 }[match[2].toLowerCase()];
         publishedAt = new Date(Date.now() - Number(match[1]) * days * 86400000).toISOString();
       }
-      if (/^[\w-]{11}$/.test(id) && title) videos.push({ id, title, publishedAt, time: age ? `${age} (approx.)` : '', thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`, url: `https://www.youtube.com/watch?v=${id}` });
+      if (/^[\w-]{11}$/.test(id) && title) videos.push({ id, title, publishedAt, time: age || '', thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`, url: `https://www.youtube.com/watch?v=${id}` });
       return;
     }
     if (value.continuationItemRenderer) continuation = value.continuationItemRenderer.continuationEndpoint?.continuationCommand?.token || continuation;

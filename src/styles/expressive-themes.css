@@ -1,0 +1,368 @@
+/* These themes change the UI geometry as well as its palette. */
+:root[data-theme="terminal"],
+.desktop-app[data-theme="terminal"] {
+  --theme-bg-root: #020b06;
+  --theme-bg-app: #020b06;
+  --theme-header-bg: linear-gradient(180deg, #0a2012, #020b06);
+  --theme-header-border: #28613d;
+  --theme-preview-shadow: #75ff9d44;
+  --theme-masthead-border: #28613d;
+  --theme-wordmark-glow: #75ff9d55;
+  --theme-channel-accent: #c5ffd5;
+  --theme-channel-num-accent: #c5ffd5;
+  --theme-footer-bg: #020b06;
+  --theme-footer-border: #28613d;
+  --theme-statusline-bg: #07180e;
+  --theme-statusline-border: #28613d;
+  --theme-statusline-color: #c5ffd5;
+  --theme-status-divider: #28613d;
+  --theme-dock-divider: #28613d;
+  --theme-dock-icon-border: #28613d;
+  --theme-dock-icon-bg: #020b06;
+  --theme-dock-icon-inset: #28613d;
+  --theme-dock-icon-hover-bg: #07180e;
+  --theme-dock-icon-hover-border: #28613d;
+  --theme-dock-color: #c5ffd5;
+  --theme-dock-scroll: #28613d;
+  --theme-dock-scroll-track: #020b06;
+  --theme-settings-masthead-bg: #07180e;
+  --theme-settings-masthead-border: #28613d;
+  --theme-settings-masthead-btn-border: #28613d;
+  --theme-settings-masthead-btn-hover: #163b24;
+  --theme-settings-page-bg: #07180e;
+  --theme-settings-sidebar-bg: #07180e;
+  --theme-settings-sidebar-border: #28613d;
+  --theme-settings-btn-border: #28613d;
+  --theme-settings-btn-bg: #07180e;
+  --theme-settings-btn-hover: #163b24;
+  --theme-settings-scroll: #28613d;
+  --theme-settings-scroll-track: #020b06;
+  --theme-badge-bg: #07180e;
+  --theme-badge-color: #c5ffd5;
+  --theme-input-border: #28613d;
+  --theme-input-bg: #07180e;
+  --theme-message-border: #28613d;
+  --theme-message-bg: #07180e;
+  --theme-panel-border: #28613d;
+  --theme-panel-bg: #07180e;
+  --theme-list-border: #28613d;
+  --theme-row-divider: #28613d;
+  --theme-channel-summary-bg: #07180e;
+  --theme-avatar-bg: #07180e;
+  --theme-form-border: #28613d;
+  --theme-form-bg: #07180e;
+  --theme-card-bg: #07180e;
+  --theme-card-border: #28613d;
+  --theme-card-hover: #163b24;
+  --theme-preset-border: #28613d;
+  --theme-preset-bg: #07180e;
+  --theme-preset-card-bg: #07180e;
+  --theme-preset-card-border: #28613d;
+  --theme-group-item-bg: #07180e;
+  --theme-picker-border: #28613d;
+  --theme-picker-bg: #07180e;
+  --theme-icon-btn-bg: #07180e;
+  --theme-icon-btn-border: #28613d;
+  --theme-accent: #75ff9d;
+  --theme-text-muted: #9dcaab;
+  --theme-guide-bg: #020b06;
+  --theme-headings-bg: #07180e;
+  --theme-headings-border-top: #28613d;
+  --theme-headings-border-bottom: #28613d;
+  --theme-headings-divider: #28613d;
+  --theme-headings-color: #c5ffd5;
+  --theme-headings-shadow: #020b06;
+  --theme-guide-scrollbar: #28613d;
+  --theme-guide-scrollbar-track: #020b06;
+  --theme-row-channel-bg: #07180e;
+  --theme-row-channel-border: #28613d;
+  --theme-row-channel-ridge: #28613d;
+  --theme-row-channel-hover: #163b24;
+  --theme-row-channel-held-bg: #07180e;
+  --theme-row-channel-held-border: #75ff9d;
+  --theme-cell-border: #28613d;
+  --theme-cell-bg: #07180e;
+  --theme-cell-hover: #12321e;
+  --theme-cell-focus-bg: #154b29;
+  --theme-cell-focus-border: #75ff9d;
+  --theme-cell-focus-text: #c5ffd5;
+  --theme-cell-focus-inset: #75ff9d33;
+  --theme-cell-focus-glow: #75ff9d22;
+  --theme-history-bg: #07180e;
+  --theme-history-btn-bg: #07180e;
+  --theme-history-btn-border: #28613d;
+  --theme-sections-bg: #07180e;
+  --theme-sections-border: #28613d;
+  --theme-section-btn-bg: #07180e;
+  --theme-section-btn-border: #28613d;
+  --theme-section-btn-color: #c5ffd5;
+}
+
+:root[data-theme="psychedelic"],
+.desktop-app[data-theme="psychedelic"] {
+  --theme-bg-root: #180b30;
+  --theme-bg-app: #180b30;
+  --theme-header-bg: radial-gradient(ellipse at 0% 0%, #1c7569, transparent 55%), radial-gradient(ellipse at 100% 10%, #9c266a, transparent 65%), linear-gradient(130deg, #251344, #402052);
+  --theme-header-border: #945aad;
+  --theme-preview-shadow: #ff8bda66;
+  --theme-masthead-border: #945aad;
+  --theme-wordmark-glow: #ff86ed88;
+  --theme-channel-accent: #fff0ff;
+  --theme-channel-num-accent: #fff0ff;
+  --theme-footer-bg: linear-gradient(115deg, #164b50, #41226b 38%, #7b2860 72%, #705326);
+  --theme-footer-border: #945aad;
+  --theme-statusline-bg: #2b1646;
+  --theme-statusline-border: #945aad;
+  --theme-statusline-color: #fff0ff;
+  --theme-status-divider: #945aad;
+  --theme-dock-divider: #945aad;
+  --theme-dock-icon-border: #945aad;
+  --theme-dock-icon-bg: linear-gradient(135deg, #b34886, #51377f 48%, #227e7a);
+  --theme-dock-icon-inset: #945aad;
+  --theme-dock-icon-hover-bg: linear-gradient(135deg, #cb627b, #824c9b 48%, #399c83);
+  --theme-dock-icon-hover-border: #945aad;
+  --theme-dock-color: #fff0ff;
+  --theme-dock-scroll: #945aad;
+  --theme-dock-scroll-track: #180b30;
+  --theme-settings-masthead-bg: #2b1646;
+  --theme-settings-masthead-border: #945aad;
+  --theme-settings-masthead-btn-border: #945aad;
+  --theme-settings-masthead-btn-hover: #563467;
+  --theme-settings-page-bg: #2b1646;
+  --theme-settings-sidebar-bg: #2b1646;
+  --theme-settings-sidebar-border: #945aad;
+  --theme-settings-btn-border: #945aad;
+  --theme-settings-btn-bg: #2b1646;
+  --theme-settings-btn-hover: #563467;
+  --theme-settings-scroll: #945aad;
+  --theme-settings-scroll-track: #180b30;
+  --theme-badge-bg: #2b1646;
+  --theme-badge-color: #fff0ff;
+  --theme-input-border: #945aad;
+  --theme-input-bg: #2b1646;
+  --theme-message-border: #945aad;
+  --theme-message-bg: #2b1646;
+  --theme-panel-border: #945aad;
+  --theme-panel-bg: #2b1646;
+  --theme-list-border: #945aad;
+  --theme-row-divider: #945aad;
+  --theme-channel-summary-bg: #2b1646;
+  --theme-avatar-bg: #2b1646;
+  --theme-form-border: #945aad;
+  --theme-form-bg: #2b1646;
+  --theme-card-bg: #2b1646;
+  --theme-card-border: #945aad;
+  --theme-card-hover: #563467;
+  --theme-preset-border: #945aad;
+  --theme-preset-bg: #2b1646;
+  --theme-preset-card-bg: #2b1646;
+  --theme-preset-card-border: #945aad;
+  --theme-group-item-bg: #2b1646;
+  --theme-picker-border: #945aad;
+  --theme-picker-bg: #2b1646;
+  --theme-icon-btn-bg: #2b1646;
+  --theme-icon-btn-border: #945aad;
+  --theme-accent: #a8ffda;
+  --theme-text-muted: #d7bce5;
+  --theme-guide-bg: radial-gradient(ellipse at 10% 80%, #225850, transparent 65%), linear-gradient(125deg, #351245, #161c43 60%, #46203f);
+  --theme-headings-bg: linear-gradient(105deg, #325659, #623883, #7a355d);
+  --theme-headings-border-top: #945aad;
+  --theme-headings-border-bottom: #945aad;
+  --theme-headings-divider: #945aad;
+  --theme-headings-color: #fff0ff;
+  --theme-headings-shadow: #180b30;
+  --theme-guide-scrollbar: #945aad;
+  --theme-guide-scrollbar-track: #180b30;
+  --theme-row-channel-bg: #2b1646;
+  --theme-row-channel-border: #945aad;
+  --theme-row-channel-ridge: #945aad;
+  --theme-row-channel-hover: #563467;
+  --theme-row-channel-held-bg: #2b1646;
+  --theme-row-channel-held-border: #a8ffda;
+  --theme-cell-border: #945aad;
+  --theme-cell-bg: linear-gradient(125deg, #483064, #263e5a 60%, #28564d);
+  --theme-cell-hover: #634575;
+  --theme-cell-focus-bg: linear-gradient(120deg, #673b7a, #275e69 55%, #64541e);
+  --theme-cell-focus-border: #a8ffda;
+  --theme-cell-focus-text: #fff0ff;
+  --theme-cell-focus-inset: #fff1bb55;
+  --theme-cell-focus-glow: #ff90d466;
+  --theme-history-bg: #2b1646;
+  --theme-history-btn-bg: #2b1646;
+  --theme-history-btn-border: #945aad;
+  --theme-sections-bg: #2b1646;
+  --theme-sections-border: #945aad;
+  --theme-section-btn-bg: #2b1646;
+  --theme-section-btn-border: #945aad;
+  --theme-section-btn-color: #fff0ff;
+}
+
+/* Shared treatment keeps labels legible over both custom surfaces. */
+.desktop-app:is([data-theme="terminal"], [data-theme="psychedelic"]) {
+  color: var(--theme-headings-color);
+}
+.desktop-app:is([data-theme="terminal"], [data-theme="psychedelic"]) :is(.row-channel, .row-num, .program-channel, .program-channel-number, .header-clock, .watch-link, .app-wordmark > span) {
+  color: var(--theme-accent);
+}
+.desktop-app:is([data-theme="terminal"], [data-theme="psychedelic"]) :is(.row-name, .cell-video, .program-info h1, .program-info h1 a, .program-description p, .app-wordmark, .settings-page a) {
+  color: var(--theme-headings-color);
+}
+.desktop-app:is([data-theme="terminal"], [data-theme="psychedelic"]) :is(.row-provider, .row-section, .program-meta, .preview-hint, .guide-statusline > span:last-child, .app-wordmark small) {
+  color: var(--theme-text-muted);
+}
+.desktop-app:is([data-theme="terminal"], [data-theme="psychedelic"]) :is(.guide-sections button[aria-pressed="true"], .dock-button[aria-pressed="true"] .dock-icon) {
+  background: var(--theme-cell-focus-bg);
+  border-color: var(--theme-accent);
+  color: var(--theme-accent);
+  box-shadow: 0 0 12px var(--theme-cell-focus-glow);
+}
+.desktop-app:is([data-theme="terminal"], [data-theme="psychedelic"]) .guide-notice {
+  background: var(--theme-panel-bg);
+  border-color: var(--theme-panel-border);
+}
+
+/* Hacker Terminal: a flat console, indexed commands, and phosphor scanlines. */
+.desktop-app[data-theme="terminal"] {
+  font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+  --channel-width: 220px;
+}
+.desktop-app[data-theme="terminal"] :is(.program-header, .settings-masthead) {
+  background-image: repeating-linear-gradient(0deg, #75ff9d04 0 1px, transparent 1px 4px), var(--theme-header-bg);
+  border-bottom: 1px solid var(--theme-accent);
+}
+.desktop-app[data-theme="terminal"] :is(.program-masthead, .guide-statusline) { border-bottom-style: dashed; }
+.desktop-app[data-theme="terminal"] .app-wordmark { font-size: 23px; font-style: normal; letter-spacing: -.8px; }
+.desktop-app[data-theme="terminal"] .app-wordmark::before { content: "> "; color: var(--theme-accent); }
+.desktop-app[data-theme="terminal"] .app-wordmark::after { content: "_"; color: var(--theme-accent); }
+.desktop-app[data-theme="terminal"] .header-clock { font-size: 13px; gap: 12px; }
+.desktop-app[data-theme="terminal"] :is(.program-channel, .guide-column-headings) { text-transform: uppercase; letter-spacing: .08em; }
+.desktop-app[data-theme="terminal"] :is(.cell, .row-channel, .guide-column-headings, .guide-column-headings > div > span, .dock-divider) { border-style: solid; border-width: 1px; }
+.desktop-app[data-theme="terminal"] :is(.cell, .preview-frame, .dock-icon, .settings-page button, .settings-page input, .settings-page select, .theme-card, .feed-card, .channel-list, .add-channel-panel) { border-radius: 0; }
+.desktop-app[data-theme="terminal"] .cell { padding-left: 18px; position: relative; }
+.desktop-app[data-theme="terminal"] .cell-focused::before { content: ">"; position: absolute; left: 4px; color: var(--theme-accent); }
+.desktop-app[data-theme="terminal"] .cell-title { font-weight: 500; font-size: 13px; text-shadow: none; }
+.desktop-app[data-theme="terminal"] .row-num { font-size: 14px; }
+.desktop-app[data-theme="terminal"] .row-num::before { content: "["; }
+.desktop-app[data-theme="terminal"] .row-num::after { content: "]"; }
+.desktop-app[data-theme="terminal"] .guide-footer { border-top: 1px solid var(--theme-accent); }
+.desktop-app[data-theme="terminal"] .guide-statusline { font-size: 11px; }
+.desktop-app[data-theme="terminal"] .guide-dock { counter-reset: command; gap: 6px; padding: 0 10px; }
+.desktop-app[data-theme="terminal"] .dock-button { flex-direction: row; justify-content: center; gap: 6px; max-width: none; }
+.desktop-app[data-theme="terminal"] .guide-dock > .dock-button { flex-basis: 105px; }
+.desktop-app[data-theme="terminal"] :is(.preview-placeholder, .cell-empty, .guide-history, .settings-sidebar nav small) { color: var(--theme-text-muted); }
+.desktop-app[data-theme="terminal"] .settings-sidebar nav button[aria-current="page"] { background: #14381f; color: var(--theme-accent); }
+.desktop-app[data-theme="terminal"] .dock-categories .dock-button { flex: 0 0 auto; min-width: 96px; padding: 6px 9px; border: 1px solid var(--theme-dock-divider); }
+.desktop-app[data-theme="terminal"] .dock-categories .dock-button::before { counter-increment: command; content: counter(command, decimal-leading-zero); color: var(--theme-accent); font-size: 10px; }
+.desktop-app[data-theme="terminal"] .dock-categories .dock-icon { display: none; }
+.desktop-app[data-theme="terminal"] .dock-icon { width: 23px; height: 23px; border: 0; background: none; box-shadow: none; }
+.desktop-app[data-theme="terminal"] .dock-icon svg { width: 20px; height: 20px; filter: grayscale(1) sepia(1) saturate(5) hue-rotate(80deg); }
+.desktop-app[data-theme="terminal"] .dock-button[aria-pressed="true"] { color: var(--theme-accent); background: #14381f; }
+.desktop-app[data-theme="terminal"] .settings-sidebar nav button[aria-current="page"] { border-left: 3px solid var(--theme-accent); }
+.desktop-app[data-theme="terminal"] .theme-title-wrapper h3 { font-size: 15px; }
+
+/* Psychedelic Melt: fluid silhouettes; content and hit targets stay steady. */
+.desktop-app[data-theme="psychedelic"] :is(.program-header, .settings-masthead) {
+  position: relative;
+  border-bottom: 0;
+  border-radius: 0 0 38px 65px / 0 0 18px 28px;
+  isolation: isolate;
+}
+.desktop-app[data-theme="psychedelic"] :is(.program-header, .settings-masthead)::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25px;
+  background: linear-gradient(90deg, #6ef8c2, #fa7ddb 35%, #f3b166 65%, #ac91ff), radial-gradient(ellipse 12px 24px at 22px 0, #6ef8c2 95%, transparent), radial-gradient(ellipse 19px 17px at 105px 0, #f3b166 95%, transparent), radial-gradient(ellipse 10px 22px at 65px 0, #fa7ddb 95%, transparent), radial-gradient(ellipse 15px 12px at 145px 0, #ac91ff 95%, transparent);
+  background-size: 100% 2px, 213px 25px, 277px 25px, 331px 25px, 187px 25px;
+  background-repeat: no-repeat, repeat-x, repeat-x, repeat-x, repeat-x;
+  opacity: .65;
+  transform-origin: top;
+  animation: melt-drips 11s ease-in-out infinite alternate;
+}
+.desktop-app[data-theme="psychedelic"] .program-info { padding-bottom: 30px; }
+.desktop-app[data-theme="psychedelic"] .settings-masthead { background: var(--theme-header-bg); }
+.desktop-app[data-theme="psychedelic"] .settings-masthead::after { height: 10px; }
+.desktop-app[data-theme="psychedelic"] .app-wordmark {
+  font-family: Georgia, serif;
+  font-size: 31px;
+  font-style: italic;
+  letter-spacing: -1.5px;
+  text-shadow: 2px 3px #903461, -1px -1px #47a997, 0 6px 12px #fc79d54d;
+}
+.desktop-app[data-theme="psychedelic"] .app-wordmark > span { color: #ffdc9b; }
+.desktop-app[data-theme="psychedelic"] .preview-frame { border-radius: 29px 44px 24px 50px / 28px 22px 40px 24px; border: 2px solid #dda0d2; }
+.desktop-app[data-theme="psychedelic"] .preview-play { border-radius: inherit; }
+.desktop-app[data-theme="psychedelic"] .program-masthead { border-bottom: 1px dashed #dc8acd88; }
+.desktop-app[data-theme="psychedelic"] .guide-column-headings { border-radius: 16px 30px 12px 22px; border-style: solid; margin: 4px 6px; }
+.desktop-app[data-theme="psychedelic"] .guide-row { min-height: 73px; padding: 3px 6px; gap: 5px; }
+.desktop-app[data-theme="psychedelic"] .row-channel { border: 1px solid #9864ac; border-radius: 22px 10px 27px 12px; background: linear-gradient(130deg, #44244d, #1a4242); }
+.desktop-app[data-theme="psychedelic"] .row-channel-held { border-color: var(--theme-accent); }
+.desktop-app[data-theme="psychedelic"] .row-cells { gap: 6px; padding: 0; }
+.desktop-app[data-theme="psychedelic"] .cell {
+  border: 1px solid #b388c0;
+  border-radius: 15px 29px 16px 25px / 23px 14px 28px 15px;
+  box-shadow: inset 0 2px 0 #ffffff16, 0 3px 0 #130924;
+  padding: 10px 15px;
+  animation: melt-shape 14s ease-in-out infinite alternate;
+}
+.desktop-app[data-theme="psychedelic"] .cell:nth-child(2n) { background: linear-gradient(135deg, #5a254e, #423269 55%, #3a4f69); animation-delay: -5s; }
+.desktop-app[data-theme="psychedelic"] .cell:nth-child(3n) { background: linear-gradient(125deg, #235249, #353d62 55%, #61422f); animation-delay: -9s; }
+.desktop-app[data-theme="psychedelic"] .cell-video:hover { background: #684970; }
+.desktop-app[data-theme="psychedelic"] .cell-focused,
+.desktop-app[data-theme="psychedelic"] .cell-focused:hover { background: var(--theme-cell-focus-bg); border: 2px solid var(--theme-accent); box-shadow: inset 0 0 0 1px #e1ffc833, 0 0 12px #8fffd444; }
+.desktop-app[data-theme="psychedelic"] .guide-footer { border-top: 2px solid #e99abf; border-radius: 40px 60px 0 0 / 18px 25px 0 0; overflow: hidden; }
+.desktop-app[data-theme="psychedelic"] .guide-statusline { background: #210f3299; font-size: 12px; }
+.desktop-app[data-theme="psychedelic"] .dock-icon {
+  border-radius: 42% 58% 32% 68% / 58% 35% 65% 42%;
+  border: 1px solid #efb1dc;
+  box-shadow: inset 0 3px 5px #ffd5e838, 0 4px 0 #120b3088;
+  animation: melt-shape 10s ease-in-out infinite alternate;
+}
+.desktop-app[data-theme="psychedelic"] .dock-button:nth-child(2n) .dock-icon { animation-delay: -4s; background: linear-gradient(130deg, #408e79, #665998 60%, #9d4267); }
+.desktop-app[data-theme="psychedelic"] .dock-button[aria-pressed="true"] .dock-icon { border: 2px solid #fff3ad; background: linear-gradient(130deg, #987744, #683b86, #277d6f); }
+.desktop-app[data-theme="psychedelic"] .settings-sidebar { background: linear-gradient(160deg, #352044, #163d3d); border-radius: 0 38px 50px 0; }
+.desktop-app[data-theme="psychedelic"] :is(.theme-card, .feed-card, .add-channel-panel, .channel-list) { border-radius: 23px 37px 28px 15px / 20px 24px 38px 27px; }
+.desktop-app[data-theme="psychedelic"] :is(.settings-page button, .settings-page input, .settings-page select, .guide-sections button, .guide-history button) { border-radius: 13px 19px 12px 17px; }
+.desktop-app[data-theme="psychedelic"] .theme-card { background: linear-gradient(130deg, #372242, #28304b); }
+
+/* Small style previews communicate the difference before selecting a theme. */
+.theme-card-heading { flex-wrap: wrap; }
+.theme-title-wrapper { min-width: 0; }
+.theme-style-preview { padding: 13px 15px; height: 88px; overflow: hidden; }
+.theme-style-preview > span { font-size: 14px; }
+.theme-style-preview > div { display: flex; gap: 8px; margin-top: 12px; }
+.theme-style-preview i { height: 20px; flex: 1; }
+.theme-style-preview--terminal { color: #75ff9d; font-family: monospace; border: 1px solid #28613d; background: repeating-linear-gradient(0deg, #75ff9d08 0 1px, transparent 1px 4px), #020b06; }
+.theme-style-preview--terminal i { border: 1px solid #28613d; }
+.theme-style-preview--psychedelic { background: linear-gradient(120deg, #387d65, #62388a, #a5336b, #967439); border-radius: 15px 25px 20px 30px; color: #fff1df; font-family: Georgia, serif; font-style: italic; }
+.theme-style-preview--psychedelic i { background: linear-gradient(120deg, #e69b70, #bc63d5, #58c9b2); border-radius: 30% 50% 35% 60%; }
+[data-theme-card="terminal"] .theme-swatch { background: #75ff9d; color: #75ff9d; border-radius: 0; }
+[data-theme-card="terminal"] .chip-header { background: #020b06; }
+[data-theme-card="terminal"] .chip-guide { background: #07180e; }
+[data-theme-card="terminal"] .chip-accent { background: #75ff9d; }
+[data-theme-card="terminal"] .chip-dock { background: #28613d; }
+[data-theme-card="psychedelic"] .theme-swatch { background: conic-gradient(#fb8ad9, #ad8eff, #88f4c7, #ffcf86, #fb8ad9); color: #ee97de; }
+[data-theme-card="psychedelic"] .chip-header { background: linear-gradient(110deg, #409c81, #b43b89); }
+[data-theme-card="psychedelic"] .chip-guide { background: linear-gradient(110deg, #763b90, #377a83); }
+[data-theme-card="psychedelic"] .chip-accent { background: linear-gradient(110deg, #b3ffc9, #ffce8d); }
+[data-theme-card="psychedelic"] .chip-dock { background: linear-gradient(110deg, #fe87bc, #aa87f1); }
+@keyframes melt-shape {
+  to { border-radius: 28px 14px 30px 12px / 14px 27px 13px 28px; }
+}
+@keyframes melt-drips { to { transform: scaleY(.55); } }
+@media (max-width: 1000px) {
+  .desktop-app[data-theme="terminal"] { --channel-width: 175px; }
+  .desktop-app[data-theme="terminal"] .header-clock { flex-direction: column; align-items: flex-end; gap: 3px; font-size: 11px; }
+  .desktop-app[data-theme="terminal"] .cell-title { font-size: 11px; }
+  .desktop-app[data-theme="terminal"] .row-channel { gap: 5px; }
+  .desktop-app[data-theme="psychedelic"] .cell { padding: 9px 11px; }
+  .desktop-app[data-theme="psychedelic"] .guide-row { min-height: 67px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desktop-app[data-theme="psychedelic"] *,
+  .desktop-app[data-theme="psychedelic"] *::after { animation: none !important; }
+}

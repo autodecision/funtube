@@ -14,4 +14,6 @@ contextBridge.exposeInMainWorld('funtube', {
   saveGroup: (input) => ipcRenderer.invoke('funtube:save-group', input),
   removeGroup: (id) => ipcRenderer.invoke('funtube:remove-group', id),
   addGroupPreset: (name) => ipcRenderer.invoke('funtube:add-group-preset', name),
+  getTheme: () => ipcRenderer.invoke('funtube:get-theme'),
+  saveTheme: (theme) => ipcRenderer.invoke('funtube:save-theme', theme),
 });

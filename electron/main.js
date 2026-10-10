@@ -46,6 +46,7 @@ if (ownsLock) app.whenReady().then(() => {
     'save-keys': (keys) => store.saveKeys(keys), 'all-channels': () => store.allChannels(),
     'add-channel': (input) => store.addChannel(input), 'update-channel': (input) => store.updateChannel(input), 'remove-channel': (id) => store.removeChannel(id),
     groups: () => store.groups(), 'save-group': (input) => store.saveGroup(input), 'remove-group': (id) => store.removeGroup(id), 'add-group-preset': (name) => store.addGroupPreset(name),
+    'get-theme': () => store.getTheme(), 'save-theme': (theme) => store.saveTheme(theme),
   };
   for (const [name, handler] of Object.entries(handlers)) ipcMain.handle(`funtube:${name}`, (event, value) => {
     assertSender(event, window?.webContents);

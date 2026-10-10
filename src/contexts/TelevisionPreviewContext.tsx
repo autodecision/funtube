@@ -11,7 +11,7 @@ export type TelevisionPreview = {
   description?: string;
   platform: string;
   creatorName: string;
-  channelNumber: number;
+  channelNumber: string;
 };
 
 type TelevisionPreviewContextValue = {

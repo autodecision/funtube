@@ -20,7 +20,7 @@ The first launch imports `data/channel-snapshot.json`: 23 demo channels (20 YouT
 
 Subsequent launches use your own SQLite database under Electron's user-data directory (`~/.config/Funtube/funtube.sqlite` on Linux, or `$XDG_CONFIG_HOME/Funtube`). Channel edits are local and do not modify the bundled demo. Deleting channels does not cause the demo to reappear.
 
-Use **Settings & channels** to add YouTube/Rumble channel URLs or YouTube @handles, edit groups, disable channels, or remove them. Channel edits and feed caches persist across restarts.
+Use **Settings & channels** to add YouTube/Rumble channel URLs or YouTube @handles, edit groups, disable channels, or remove them. Settings is split into Channels, Categories & sections, and Video feeds. Search your lineup and use Edit on a channel to reveal its controls; adding channels and choosing icons expand only when needed. Channel edits and feed caches persist across restarts.
 
 **Categories & sections** offers 16 category presets with 64 suggested sections, plus a searchable collection of 102 original SVG icons. The six original categories are available initially; add other presets as needed, or create your own categories and sections with any library icon. Sections belong to a category. Channel forms offer these saved groups, the dock includes custom categories, and section buttons filter a category's guide. Group names and icon choices persist in SQLite. Renaming or moving a section updates its channel assignments; groups containing channels must be emptied before removal. Existing channel labels are imported during migration.
 

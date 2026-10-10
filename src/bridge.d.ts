@@ -26,6 +26,8 @@ declare global {
       saveGroup(input: GroupInput): Promise<GuideGroup[]>;
       removeGroup(id: number): Promise<GuideGroup[]>;
       addGroupPreset(name: string): Promise<GuideGroup[]>;
+      getTheme(): Promise<string>;
+      saveTheme(theme: string): Promise<string>;
     };
   }
 }
