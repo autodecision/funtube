@@ -246,14 +246,12 @@
 .desktop-app[data-theme="terminal"] .row-num::after { content: "]"; }
 .desktop-app[data-theme="terminal"] .guide-footer { border-top: 1px solid var(--theme-accent); }
 .desktop-app[data-theme="terminal"] .guide-statusline { font-size: 11px; }
-.desktop-app[data-theme="terminal"] .guide-dock { counter-reset: command; gap: 6px; padding: 0 10px; }
+.desktop-app[data-theme="terminal"] .guide-dock { gap: 6px; padding: 0 10px; }
 .desktop-app[data-theme="terminal"] .dock-button { flex-direction: row; justify-content: center; gap: 6px; max-width: none; }
 .desktop-app[data-theme="terminal"] .guide-dock > .dock-button { flex-basis: 105px; }
 .desktop-app[data-theme="terminal"] :is(.preview-placeholder, .cell-empty, .guide-history, .settings-sidebar nav small) { color: var(--theme-text-muted); }
 .desktop-app[data-theme="terminal"] .settings-sidebar nav button[aria-current="page"] { background: #14381f; color: var(--theme-accent); }
 .desktop-app[data-theme="terminal"] .dock-categories .dock-button { flex: 0 0 auto; min-width: 96px; padding: 6px 9px; border: 1px solid var(--theme-dock-divider); }
-.desktop-app[data-theme="terminal"] .dock-categories .dock-button::before { counter-increment: command; content: counter(command, decimal-leading-zero); color: var(--theme-accent); font-size: 10px; }
-.desktop-app[data-theme="terminal"] .dock-categories .dock-icon { display: none; }
 .desktop-app[data-theme="terminal"] .dock-icon { width: 23px; height: 23px; border: 0; background: none; box-shadow: none; }
 .desktop-app[data-theme="terminal"] .dock-icon svg { width: 20px; height: 20px; filter: grayscale(1) sepia(1) saturate(5) hue-rotate(80deg); }
 .desktop-app[data-theme="terminal"] .dock-button[aria-pressed="true"] { color: var(--theme-accent); background: #14381f; }
